@@ -1,4 +1,4 @@
-package sample;
+package Weatheronomy;
 
 public class Controller {
 }
