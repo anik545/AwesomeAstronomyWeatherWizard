@@ -1,4 +1,4 @@
 package Weatheronomy.controller;
 
-public class locationPicker {
+public class LocationPicker {
 }
