@@ -11,7 +11,11 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+<<<<<<< HEAD
         Parent root = FXMLLoader.load(ClassLoader.getSystemResource("weatheronomy.fxml"));
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("view/weatheronomyHome.fxml"));
+>>>>>>> Started controller logic and communication.
         primaryStage.setTitle("Hello World");
 
 
@@ -25,3 +29,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+
