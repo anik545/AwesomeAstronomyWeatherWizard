@@ -1,0 +1,25 @@
+apply plugin: 'application'
+
+sourceSets {
+  main {
+    java {
+      srcDirs = ['src']
+    }
+    resources {
+      srcDirs = ['src/Weatheronomy/view']
+    }
+  }
+}
+
+mainClassName = 'Weatheronomy.Main'
+
+repositories {
+  mavenCentral()
+}
+
+sourceCompatibility = 10
+targetCompatibility = 10
+
+dependencies {
+  compile 'com.jfoenix:jfoenix:9.0.3' // Java 9
+}
