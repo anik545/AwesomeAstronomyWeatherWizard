@@ -22,4 +22,5 @@ targetCompatibility = 10
 
 dependencies {
   compile 'com.jfoenix:jfoenix:9.0.3' // Java 9
+  compile 'de.jensd:fontawesomefx:8.9'
 }
