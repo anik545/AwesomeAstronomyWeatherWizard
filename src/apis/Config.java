@@ -1,5 +1,7 @@
 package apis;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Properties;
 
 public class Config {
@@ -9,10 +11,15 @@ public class Config {
 		Config conf = new Config();
 		String key = conf.getProperty("WEATHER_KEY");
 	}
+
+
 	public Config() {
 		configFile = new java.util.Properties();
 		try {
-			configFile.load(this.getClass().getClassLoader().getResourceAsStream("config.cfg"));
+            System.out.println(new File("./res/config.properties").getCanonicalPath());
+            File file = new File("./res/config.properties");
+            FileInputStream f  = new FileInputStream(file);
+			configFile.load(f);
 			System.out.println(configFile);
 		} catch (Exception eta){
 			eta.printStackTrace();

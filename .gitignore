@@ -62,4 +62,4 @@ lib/
 *.jar
 
 *.cfg
-
+*.properties
