@@ -9,12 +9,14 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class LightPollution {
+public class LightPollution extends StackPane {
     WebView lightMap;
     WebEngine webEngine;
     public Pane map;
 
     public LightPollution(double lat, double lng) throws IOException {
+        super();
+
         // Loading Spinner
         //JFXSpinner loader = new JFXSpinner();
         Parent loader = FXMLLoader.load(ClassLoader.getSystemResource("loader.fxml"));
@@ -41,8 +43,7 @@ public class LightPollution {
             }
         });
 
-        map = new StackPane();
-        map.getChildren().addAll(lightMap, loader);
+        this.getChildren().addAll(lightMap, loader);
     }
 
     public void move(double lat, double lng) {
