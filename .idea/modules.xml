@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AwesomeAstronomyWeatherWizard.iml" filepath="$PROJECT_DIR$/AwesomeAstronomyWeatherWizard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AwesomeAstronomyWeatherWizard.iml" filepath="$PROJECT_DIR$/.idea/modules/AwesomeAstronomyWeatherWizard.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AwesomeAstronomyWeatherWizard_main.iml" filepath="$PROJECT_DIR$/.idea/modules/AwesomeAstronomyWeatherWizard_main.iml" group="AwesomeAstronomyWeatherWizard" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AwesomeAstronomyWeatherWizard_test.iml" filepath="$PROJECT_DIR$/.idea/modules/AwesomeAstronomyWeatherWizard_test.iml" group="AwesomeAstronomyWeatherWizard" />
     </modules>
