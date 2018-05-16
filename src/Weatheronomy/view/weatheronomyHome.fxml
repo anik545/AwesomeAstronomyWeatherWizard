@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
-   <children>
-
-   </children>
-</VBox>
+<ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
+   <content>
+      <VBox prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #303030;">
+         <children>
+            <Pane fx:id="dateLocationPane" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="cloudBarPane" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="clearNightsPane" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="nextWeekPane" prefHeight="200.0" prefWidth="200.0"/>
+            <Pane fx:id="astronomicalEventsPane" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="80.0" minHeight="50.0" minWidth="200.0" prefHeight="80.0" prefWidth="500.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.CloudBar">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.CloudBar">
    <children>
-      <HBox id="cloudCover" layoutX="150.0" layoutY="-10.0" prefHeight="100.0" prefWidth="200.0" style="-fx-border-radius: 10px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eeeef5; radi: 10;" />
-            <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #b6bfcb;" />
-            <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d5dae2;" />
-            <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #eeeef5;" />
-            <Pane prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #b6bfcb;" />
-         </children>
-      </HBox>
-      <Pane id="tempGraph" blendMode="MULTIPLY" layoutX="150.0" layoutY="-60.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <Line id="currentTime" endY="45.0" layoutX="50.0" stroke="#e15151" strokeWidth="2.0" />
-         </children>
-      </Pane>
-      <Text id="startTime" fill="AQUA" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" />
-      <Text id="endTime" fill="AQUA" layoutX="451.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12:00" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
    </children>
 </AnchorPane>
