@@ -10,19 +10,19 @@ import java.io.IOException;
 
 public class WeatheronomyHomeController {
     @FXML
-    Pane dateLocationPane;
+    private Pane dateLocationPane;
 
     @FXML
-    Pane cloudBarPane;
+    private Pane cloudBarPane;
 
     @FXML
-    Pane clearNightsPane;
+    private Pane clearNightsPane;
 
     @FXML
-    Pane nextWeekPane;
+    private Pane nextWeekPane;
 
     @FXML
-    Pane astronomicalEventsPane;
+    private Pane astronomicalEventsPane;
 
 
     @FXML
