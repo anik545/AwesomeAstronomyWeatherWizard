@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #cfcfcf, #303030; -fx-background-insets: 0, 1 1 1 1;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatherInfo">
    <children>
-      <JFXButton fx:id="LocationInput" layoutX="402.0" layoutY="71.0" onAction="#inputLocation" prefHeight="25.0" prefWidth="39.0" ripplerFill="#00ccff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
+      <JFXButton layoutX="402.0" layoutY="71.0" onAction="#inputLocation" prefHeight="25.0" prefWidth="39.0" ripplerFill="#00ccff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
       <Label fx:id="timeBox" layoutX="339.0" layoutY="11.0" prefHeight="49.0" prefWidth="97.0" text="Time" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -23,7 +23,7 @@
       <FontIcon iconColor="WHITE" iconLiteral="wi-small-craft-advisory" iconSize="30" layoutX="26.0" layoutY="45.0" wrappingWidth="22.999995946884155" />
       <FontIcon iconColor="WHITE" iconLiteral="wi-time-9" iconSize="40" layoutX="302.0" layoutY="50.0" wrappingWidth="22.999995946884155" />
 
-      <Pane layoutX="18.0" layoutY="125.0" prefHeight="102.0" prefWidth="197.0">
+      <Pane layoutX="14.0" layoutY="108.0" prefHeight="124.0" prefWidth="197.0">
          <children>
             <Label layoutY="-2.0" text="Cloud Coverage:" textFill="WHITE">
                <font>
@@ -41,22 +41,32 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="CloudCoverage" layoutX="165.0" text="&lt;&gt;" textFill="WHITE">
+            <Label fx:id="CloudCoverage" layoutX="137.0" text="&lt;&gt;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="Visibility" layoutX="164.0" layoutY="24.0" text="&lt;&gt;" textFill="WHITE">
+            <Label fx:id="Visibility" layoutX="137.0" layoutY="24.0" text="&lt;&gt;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="FeelsLike" layoutX="165.0" layoutY="48.0" text="&lt;&gt;" textFill="WHITE">
+            <Label fx:id="FeelsLike" layoutX="137.0" layoutY="48.0" text="&lt;&gt;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="Rain" layoutX="165.0" layoutY="73.0" text="&lt;&gt;" textFill="WHITE">
+            <Label fx:id="Rain" layoutX="138.0" layoutY="73.0" text="&lt;&gt;" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font></Label>
+            <Label layoutX="2.0" layoutY="97.0" text="Wind / Bearing:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Wind" layoutX="138.0" layoutY="97.0" text="&lt;&gt;" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <JFXTextField fx:id="LongitudeTF" layoutX="225.0" layoutY="64.0" onMouseEntered="#UpdateLongs" onMouseExited="#UpdateLongTF" prefHeight="39.0" prefWidth="89.0" promptText="Longitude" style="-fx-prompt-text-fill: #cfcfcf; -fx-text-inner-color: white;">
@@ -86,7 +96,7 @@
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="LoadCity" buttonType="RAISED" layoutX="161.0" layoutY="71.0" onAction="#LoadLocationCity" ripplerFill="#00caff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
+      <JFXButton buttonType="RAISED" layoutX="161.0" layoutY="71.0" onAction="#LoadLocationCity" ripplerFill="#00caff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
       <Label fx:id="ErrorBox" layoutX="14.0" layoutY="228.0" prefHeight="17.0" prefWidth="180.0" textFill="RED" />
    </children>
 </AnchorPane>

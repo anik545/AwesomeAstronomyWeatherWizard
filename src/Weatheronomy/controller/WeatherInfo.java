@@ -56,7 +56,7 @@ public class WeatherInfo implements Initializable {
     private Label Visibility;
 
     @FXML
-    private JFXButton LocationInput;
+    private Label Wind;
 
     @FXML
     private JFXTextField LongitudeTF;
@@ -69,9 +69,6 @@ public class WeatherInfo implements Initializable {
 
     @FXML
     private Label IconDescriptor;
-
-    @FXML
-    private JFXButton LoadCity;
 
     @FXML
     private JFXTextField CityTF;
@@ -171,6 +168,7 @@ public class WeatherInfo implements Initializable {
         Temp.setText(Temperature1.toString());
         IconDescriptor.setText(current.getIcon());
         WeatherIconMain.setIconCode(Icons.getOrDefault(current.getIcon(), WeatherIcons.ALIEN));
+        Wind.setText(current.getWindSpeed().toString() +" / "+ current.getWindBearing().toString());
         ErrorBox.setText("");
     }
 
