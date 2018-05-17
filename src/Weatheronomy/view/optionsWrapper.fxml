@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.OptionsWrapper">
+   <top>
+      <AnchorPane prefHeight="60.0" prefWidth="450.0" style="-fx-background-color: #003893;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="83.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-family: Calibri;" text="Awesome Astronomy Weather Wizards" />
+            <JFXHamburger fx:id="hamburger" layoutX="22.0" layoutY="20.0" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane fx:id="centreAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXDrawer fx:id="drawer" prefHeight="642.0" prefWidth="201.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
