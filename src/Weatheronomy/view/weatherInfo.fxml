@@ -43,16 +43,16 @@
          <font>
             <Font size="18.0" />
          </font></JFXTextField>
-      <FontIcon iconLiteral="wi-day-cloudy" iconSize="65" layoutX="245.0" layoutY="194.0" text="" wrappingWidth="114.0000019222498" />
+      <FontIcon fx:id="WeatherIconMain" iconLiteral="wi-day-cloudy" iconSize="65" layoutX="245.0" layoutY="194.0" text="" wrappingWidth="114.0000019222498" />
       <Label layoutX="358.0" layoutY="140.0" text="Temperature:" />
       <Label fx:id="Temp" layoutX="374.0" layoutY="157.0" text="&lt;Temp&gt;" />
       <Label fx:id="IconDescriptor" layoutX="365.0" layoutY="174.0" text="&lt;IconDesc&gt;" />
       <JFXButton layoutX="346.0" layoutY="204.0" onAction="#loadNow" prefHeight="25.0" prefWidth="97.0" text="Now" />
-      <JFXTextField layoutX="55.0" layoutY="64.0" prefHeight="25.0" prefWidth="97.0" text="Cambridge">
+      <JFXTextField fx:id="CityTF" layoutX="55.0" layoutY="64.0" prefHeight="25.0" prefWidth="97.0" promptText="Cambridge">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="LoadCity" layoutX="152.0" layoutY="78.0" text="GO!" />
+      <JFXButton fx:id="LoadCity" layoutX="152.0" layoutY="78.0" onAction="#LoadLocationCity" text="GO!" />
    </children>
 </AnchorPane>

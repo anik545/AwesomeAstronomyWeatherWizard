@@ -16,14 +16,19 @@ import org.kordamp.ikonli.weathericons.WeatherIcons;
 import apis.Weather;
 import tk.plogitech.darksky.forecast.ForecastException;
 import tk.plogitech.darksky.forecast.model.Currently;
-
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class WeatherInfo implements Initializable {
+
+    private Double Longitude = 0.091732;
+    private Double Latitude = 52.210891;
+    private Map<String, WeatherIcons> Icons = new HashMap<>();
 
     @FXML
     private Label dateBox;
@@ -59,26 +64,48 @@ public class WeatherInfo implements Initializable {
     private Label IconDescriptor;
 
     @FXML
-    void inputLocation(ActionEvent event) throws ForecastException {
-        Double longitude = Double.parseDouble(LongitudeTF.getText());
-        Double latitude = Double.parseDouble(LatitudeTF.getText());
-        Currently current = Weather.getCurrentlyAtTime(Date.from(Instant.now()),longitude, latitude);
-        CloudCoverage.setText(current.getCloudCover().toString());
-        Visibility.setText(current.getVisibility().toString());
-        Double AppTemperature = (current.getApparentTemperature()-32)*(5/9);
-        FeelsLike.setText(AppTemperature.toString());
-        Rain.setText(current.getPrecipProbability().toString());
-        Double Temperature = (current.getTemperature()-32)*(5/9);
-        Temp.setText(Temperature.toString());
-        IconDescriptor.setText(current.getIcon());
+    private JFXButton LoadCity;
 
+    @FXML
+    private JFXTextField CityTF;
+
+    @FXML
+    private FontIcon WeatherIconMain;
+
+    @FXML
+    void LoadLocationCity(ActionEvent event) throws ForecastException {
+        String city = CityTF.getText();
+        CityTF.setPromptText(city);
+        CityTF.clear();
+        //convert city to long lat
+        //set new location global
+        //set long lat prompts
+        LongitudeTF.setPromptText("");
+        LatitudeTF.setPromptText("");
+        loadNow2();
+    }
+
+    @FXML
+    void inputLocation(ActionEvent event) throws ForecastException {
+        Longitude = Double.parseDouble(LongitudeTF.getText());
+        Latitude = Double.parseDouble(LatitudeTF.getText());
+        LongitudeTF.setPromptText(Longitude.toString());
+        LatitudeTF.setPromptText(Latitude.toString());
+        LongitudeTF.clear(); LatitudeTF.clear();
+        //convert long lat to city
+        String city = "soon...";
+        CityTF.setPromptText(city);
+
+        loadNow2();
     }
 
     @FXML
     void loadNow(ActionEvent event) throws ForecastException {
-        double longitude = 0.091732;
-        double latitude = 52.210891;
-        Currently current = Weather.getCurrentlyAtTime(Date.from(Instant.now()), longitude, latitude);
+        loadNow2();
+    }
+
+    void loadNow2() throws ForecastException {
+        Currently current = Weather.getCurrentlyAtTime(Date.from(Instant.now()), Longitude, Latitude);
         CloudCoverage.setText(current.getCloudCover().toString());
         Visibility.setText(current.getVisibility().toString());
         Double AppTemperature = (((current.getApparentTemperature() - 32)*(5))/9);
@@ -89,6 +116,7 @@ public class WeatherInfo implements Initializable {
         Long Temperature1 = Math.round(Temperature);
         Temp.setText(Temperature1.toString());
         IconDescriptor.setText(current.getIcon());
+        WeatherIconMain.setIconCode(Icons.getOrDefault(current.getIcon(), WeatherIcons.ALIEN));
     }
 
     @Override
@@ -103,6 +131,22 @@ public class WeatherInfo implements Initializable {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
+        Icons.put("clear-day", WeatherIcons.DAY_SUNNY);
+        Icons.put("clear-night", WeatherIcons.NIGHT_CLEAR);
+        Icons.put("partly-cloudy-day", WeatherIcons.DAY_CLOUDY_HIGH);
+        Icons.put("partly-cloudy-night",WeatherIcons.NIGHT_ALT_CLOUDY_HIGH);
+        Icons.put("cloudy",WeatherIcons.CLOUDY);
+        Icons.put("rain",WeatherIcons.RAIN);
+        Icons.put("sleet", WeatherIcons.SLEET);
+        Icons.put("snow", WeatherIcons.SNOW);
+        Icons.put("wind",WeatherIcons.WINDY);
+        Icons.put("fog",WeatherIcons.FOG);
+
+        try {
+            loadNow2();
+        } catch (ForecastException e) {
+            e.printStackTrace();
+        }
     }
 
 
