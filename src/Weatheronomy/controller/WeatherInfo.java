@@ -1,5 +1,8 @@
 package Weatheronomy.controller;
 
+import apis.LocationNotFoundException;
+import com.google.maps.errors.ApiException;
+import com.google.maps.errors.UnknownErrorException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
@@ -9,13 +12,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.weathericons.WeatherIcons;
-
+import apis.Location;
 import apis.Weather;
 import tk.plogitech.darksky.forecast.ForecastException;
+import tk.plogitech.darksky.forecast.GeoCoordinates;
 import tk.plogitech.darksky.forecast.model.Currently;
+
+import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -73,39 +80,86 @@ public class WeatherInfo implements Initializable {
     private FontIcon WeatherIconMain;
 
     @FXML
-    void LoadLocationCity(ActionEvent event) throws ForecastException {
+    private Label ErrorBox;
+
+    @FXML
+    void LoadLocationCity(ActionEvent event) {
         String city = CityTF.getText();
-        CityTF.setPromptText(city);
-        CityTF.clear();
-        //convert city to long lat
-        //set new location global
-        //set long lat prompts
-        LongitudeTF.setPromptText("");
-        LatitudeTF.setPromptText("");
-        loadNow2();
+        if(city.equals("")){}
+        else{
+            CityTF.setPromptText(city); CityTF.clear();
+            GeoCoordinates coords = null;
+            try {
+                coords = Location.coordFromCity(city);
+            } catch (LocationNotFoundException e) {
+                ErrorBox.setText("Location Input is Invalid!");
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ApiException e) {
+                ErrorBox.setText("There is an Error with our Backend!");
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        Longitude = coords.longitude().value();
+        Latitude = coords.latitude().value();
+        LongitudeTF.setPromptText(coords.longitude().value().toString());
+        LatitudeTF.setPromptText(coords.latitude().value().toString());
+            try {
+                loadNow2(Date.from(Instant.now()));
+            } catch (ForecastException e) {
+                ErrorBox.setText("Location Data Not Valid!");
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
-    void inputLocation(ActionEvent event) throws ForecastException {
-        Longitude = Double.parseDouble(LongitudeTF.getText());
-        Latitude = Double.parseDouble(LatitudeTF.getText());
-        LongitudeTF.setPromptText(Longitude.toString());
-        LatitudeTF.setPromptText(Latitude.toString());
+    void inputLocation(ActionEvent event){
+        if(LongitudeTF.getText().equals("") || LatitudeTF.getText().equals("")){}
+        else{
+        LongitudeTF.setPromptText(LongitudeTF.getText());
+        LatitudeTF.setPromptText(LatitudeTF.getText());
+        Longitude = Double.parseDouble(LongitudeTF.getPromptText());
+        Latitude = Double.parseDouble(LatitudeTF.getPromptText());
         LongitudeTF.clear(); LatitudeTF.clear();
-        //convert long lat to city
-        String city = "soon...";
-        CityTF.setPromptText(city);
+            try {
+                String city = Location.cityFromCoord(Longitude, Latitude);
+                CityTF.setPromptText(city);
+            } catch (LocationNotFoundException e) {
+                ErrorBox.setText("Location Input is Invalid!");
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ApiException e) {
+                ErrorBox.setText("There is an Error with our Backend!");
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        loadNow2();
+            try {
+                loadNow2(Date.from(Instant.now()));
+            } catch (ForecastException e) {
+                ErrorBox.setText("Location Data Not Valid!");
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
-    void loadNow(ActionEvent event) throws ForecastException {
-        loadNow2();
+    void loadNow(ActionEvent event) {
+        try {
+            loadNow2(Date.from(Instant.now()));
+        } catch (ForecastException e) {
+            ErrorBox.setText("Invalid Location Input!");
+            e.printStackTrace();
+        }
     }
 
-    void loadNow2() throws ForecastException {
-        Currently current = Weather.getCurrentlyAtTime(Date.from(Instant.now()), Longitude, Latitude);
+    void loadNow2(Date time) throws ForecastException {
+        Currently current = Weather.getCurrentlyAtTime(time, Longitude, Latitude);
         CloudCoverage.setText(current.getCloudCover().toString());
         Visibility.setText(current.getVisibility().toString());
         Double AppTemperature = (((current.getApparentTemperature() - 32)*(5))/9);
@@ -117,6 +171,28 @@ public class WeatherInfo implements Initializable {
         Temp.setText(Temperature1.toString());
         IconDescriptor.setText(current.getIcon());
         WeatherIconMain.setIconCode(Icons.getOrDefault(current.getIcon(), WeatherIcons.ALIEN));
+        ErrorBox.setText("");
+    }
+
+    @FXML
+    void UpdateLatTF(MouseEvent event) {
+        LatitudeTF.setPromptText(Latitude.toString());
+    }
+
+    @FXML
+    void UpdateLats(MouseEvent event) {
+        LatitudeTF.setPromptText("Latitude");
+
+    }
+
+    @FXML
+    void UpdateLongTF(MouseEvent event) {
+        LongitudeTF.setPromptText(Longitude.toString());
+    }
+
+    @FXML
+    void UpdateLongs(MouseEvent event) {
+        LongitudeTF.setPromptText("Longitude");
     }
 
     @Override
@@ -134,7 +210,7 @@ public class WeatherInfo implements Initializable {
         Icons.put("clear-day", WeatherIcons.DAY_SUNNY);
         Icons.put("clear-night", WeatherIcons.NIGHT_CLEAR);
         Icons.put("partly-cloudy-day", WeatherIcons.DAY_CLOUDY_HIGH);
-        Icons.put("partly-cloudy-night",WeatherIcons.NIGHT_ALT_CLOUDY_HIGH);
+        Icons.put("partly-cloudy-night",WeatherIcons.NIGHT_CLOUDY_HIGH);
         Icons.put("cloudy",WeatherIcons.CLOUDY);
         Icons.put("rain",WeatherIcons.RAIN);
         Icons.put("sleet", WeatherIcons.SLEET);
@@ -143,12 +219,10 @@ public class WeatherInfo implements Initializable {
         Icons.put("fog",WeatherIcons.FOG);
 
         try {
-            loadNow2();
+            loadNow2(Date.from(Instant.now()));
         } catch (ForecastException e) {
+            ErrorBox.setText("Default Location Data Not Valid!");
             e.printStackTrace();
         }
     }
-
-
-
 }

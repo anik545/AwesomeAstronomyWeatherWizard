@@ -8,51 +8,85 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatherInfo">
+<AnchorPane prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #cfcfcf, #303030; -fx-background-insets: 0, 1 1 1 1;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatherInfo">
    <children>
-      <JFXButton fx:id="LocationInput" layoutX="398.0" layoutY="78.0" onAction="#inputLocation" prefHeight="25.0" prefWidth="47.0" text="GO!" />
-      <Label fx:id="timeBox" layoutX="339.0" layoutY="11.0" prefHeight="49.0" prefWidth="97.0" text="Time">
+      <JFXButton fx:id="LocationInput" layoutX="402.0" layoutY="71.0" onAction="#inputLocation" prefHeight="25.0" prefWidth="39.0" ripplerFill="#00ccff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
+      <Label fx:id="timeBox" layoutX="339.0" layoutY="11.0" prefHeight="49.0" prefWidth="97.0" text="Time" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="dateBox" layoutX="55.0" layoutY="7.0" prefHeight="56.0" prefWidth="156.0" text="Date">
+      <Label fx:id="dateBox" layoutX="55.0" layoutY="7.0" prefHeight="56.0" prefWidth="156.0" text="Date" textFill="WHITE">
          <font>
             <Font name="MT Extra" size="24.0" />
          </font></Label>
-      <FontIcon iconLiteral="wi-wind-direction" iconSize="40" layoutX="14.0" layoutY="98.0" wrappingWidth="23.0" />
-      <FontIcon iconLiteral="wi-small-craft-advisory" iconSize="30" layoutX="26.0" layoutY="45.0" wrappingWidth="22.999995946884155" />
-      <FontIcon iconLiteral="wi-time-9" iconSize="40" layoutX="302.0" layoutY="50.0" wrappingWidth="22.999995946884155" />
+      <FontIcon iconColor="WHITE" iconLiteral="wi-wind-direction" iconSize="40" layoutX="14.0" layoutY="98.0" wrappingWidth="23.0" />
+      <FontIcon iconColor="WHITE" iconLiteral="wi-small-craft-advisory" iconSize="30" layoutX="26.0" layoutY="45.0" wrappingWidth="22.999995946884155" />
+      <FontIcon iconColor="WHITE" iconLiteral="wi-time-9" iconSize="40" layoutX="302.0" layoutY="50.0" wrappingWidth="22.999995946884155" />
 
-      <Pane layoutX="14.0" layoutY="112.0" prefHeight="106.0" prefWidth="229.0">
+      <Pane layoutX="18.0" layoutY="125.0" prefHeight="102.0" prefWidth="197.0">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Cloud Coverage (%):" />
-            <Label layoutX="14.0" layoutY="31.0" text="Visibility (%):" />
-            <Label layoutX="14.0" layoutY="48.0" text="Feels Like (C):" />
-            <Label layoutX="14.0" layoutY="64.0" text="Chance of Rain:" />
-            <Label fx:id="CloudCoverage" layoutX="136.0" layoutY="14.0" text="&lt;CloudCover&gt;" />
-            <Label fx:id="Visibility" layoutX="136.0" layoutY="31.0" text="&lt;Visibility&gt;" />
-            <Label fx:id="FeelsLike" layoutX="136.0" layoutY="48.0" text="&lt;FeelsLike&gt;" />
-            <Label fx:id="Rain" layoutX="136.0" layoutY="64.0" text="&lt;Rain&gt;" />
+            <Label layoutY="-2.0" text="Cloud Coverage:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="1.0" layoutY="23.0" text="Visibility (%):" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="1.0" layoutY="47.0" text="Feels Like (C):" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutY="71.0" text="Chance of Rain:" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="CloudCoverage" layoutX="165.0" text="&lt;&gt;" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="Visibility" layoutX="164.0" layoutY="24.0" text="&lt;&gt;" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="FeelsLike" layoutX="165.0" layoutY="48.0" text="&lt;&gt;" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label fx:id="Rain" layoutX="165.0" layoutY="73.0" text="&lt;&gt;" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children>
       </Pane>
-      <JFXTextField fx:id="LongitudeTF" layoutX="225.0" layoutY="64.0" prefHeight="39.0" prefWidth="89.0" promptText="Longitude">
+      <JFXTextField fx:id="LongitudeTF" layoutX="225.0" layoutY="64.0" onMouseEntered="#UpdateLongs" onMouseExited="#UpdateLongTF" prefHeight="39.0" prefWidth="89.0" promptText="Longitude" style="-fx-prompt-text-fill: #cfcfcf; -fx-text-inner-color: white;">
          <font>
             <Font size="18.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="LatitudeTF" layoutX="323.0" layoutY="64.0" prefHeight="39.0" prefWidth="71.0" promptText="Latitude">
+      <JFXTextField fx:id="LatitudeTF" layoutX="323.0" layoutY="64.0" onMouseEntered="#UpdateLats" onMouseExited="#UpdateLatTF" prefHeight="39.0" prefWidth="71.0" promptText="Latitude" style="-fx-prompt-text-fill: #cfcfcf; -fx-text-inner-color: white;">
          <font>
             <Font size="18.0" />
          </font></JFXTextField>
-      <FontIcon fx:id="WeatherIconMain" iconLiteral="wi-day-cloudy" iconSize="65" layoutX="245.0" layoutY="194.0" text="" wrappingWidth="114.0000019222498" />
-      <Label layoutX="358.0" layoutY="140.0" text="Temperature:" />
-      <Label fx:id="Temp" layoutX="374.0" layoutY="157.0" text="&lt;Temp&gt;" />
-      <Label fx:id="IconDescriptor" layoutX="365.0" layoutY="174.0" text="&lt;IconDesc&gt;" />
-      <JFXButton layoutX="346.0" layoutY="204.0" onAction="#loadNow" prefHeight="25.0" prefWidth="97.0" text="Now" />
-      <JFXTextField fx:id="CityTF" layoutX="55.0" layoutY="64.0" prefHeight="25.0" prefWidth="97.0" promptText="Cambridge">
+      <FontIcon fx:id="WeatherIconMain" iconColor="WHITE" iconLiteral="wi-day-cloudy" iconSize="65" layoutX="239.0" layoutY="196.0" text="" wrappingWidth="114.0000019222498" />
+      <Label layoutX="347.0" layoutY="115.0" text="Temperature:" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <Label fx:id="Temp" layoutX="370.0" layoutY="136.0" text="&lt;&gt;" textFill="WHITE">
+         <font>
+            <Font size="31.0" />
+         </font></Label>
+      <Label fx:id="IconDescriptor" layoutX="347.0" layoutY="182.0" text="&lt;IconDesc&gt;" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <JFXButton layoutX="343.0" layoutY="211.0" onAction="#loadNow" prefHeight="25.0" prefWidth="89.0" ripplerFill="#0ecfff" style="-fx-background-color: #cfcfcf;" text="Now" textFill="#303030" />
+      <JFXTextField fx:id="CityTF" layoutX="55.0" layoutY="64.0" prefHeight="25.0" prefWidth="97.0" promptText="Cambridge" style="-fx-prompt-text-fill: #cfcfcf; -fx-text-inner-color: white;">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="LoadCity" layoutX="152.0" layoutY="78.0" onAction="#LoadLocationCity" text="GO!" />
+      <JFXButton fx:id="LoadCity" buttonType="RAISED" layoutX="161.0" layoutY="71.0" onAction="#LoadLocationCity" ripplerFill="#00caff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
+      <Label fx:id="ErrorBox" layoutX="14.0" layoutY="228.0" prefHeight="17.0" prefWidth="180.0" textFill="RED" />
    </children>
 </AnchorPane>
