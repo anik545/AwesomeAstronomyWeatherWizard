@@ -1,6 +1,5 @@
 package apis;
 
-
 import com.luckycatlabs.sunrisesunset.SunriseSunsetCalculator;
 import com.luckycatlabs.sunrisesunset.dto.Location;
 import tk.plogitech.darksky.api.jackson.DarkSkyJacksonClient;
@@ -137,5 +136,4 @@ public class Weather {
     public static List<Date> getClearNights(double lon, double lat) throws ForecastException {
         return getWeek(lon, lat).stream().filter(e->e.getCloudCover()<0.4).map(e -> Date.from(e.getTime())).collect(Collectors.toList());
     }
-
 }
