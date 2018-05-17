@@ -14,8 +14,10 @@ import tk.plogitech.darksky.forecast.model.Longitude;
 import java.io.IOException;
 
 public class Location {
+    static final Config conf = new Config();
+    static final String key = conf.getProperty("GEOAPI_KEY");
     static final GeoApiContext context = new GeoApiContext.Builder()
-            .apiKey("AIzaSyA1TRuKvV_6wX0PyTNirgMYp9q5PdUNkuk")
+            .apiKey(key)
             .build();
 
 
