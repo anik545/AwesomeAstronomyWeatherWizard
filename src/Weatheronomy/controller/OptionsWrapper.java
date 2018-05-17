@@ -34,12 +34,12 @@ public class OptionsWrapper {
 
         try {
             //Set up side panel
-            VBox sidePanelContent = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/optionsSidebar.fxml"));
+            VBox sidePanelContent = FXMLLoader.load(ClassLoader.getSystemResource("optionsSidebar.fxml"));
             drawer.setSidePane(sidePanelContent);
             setUpHamburgerTransitions();
 
             //Set up home screen
-            AnchorPane homeContent = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/weatheronomyHome.fxml"));
+            AnchorPane homeContent = FXMLLoader.load(ClassLoader.getSystemResource("weatheronomyHome.fxml"));
             centreAnchorPane.getChildren().add(homeContent);
             centreAnchorPane.getChildren().get(centreAnchorPane.getChildren().size() - 1).toBack();
         } catch (IOException e) {

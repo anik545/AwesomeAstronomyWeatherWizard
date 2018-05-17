@@ -28,19 +28,19 @@ public class WeatheronomyHomeController {
     @FXML
     public void initialize() {
         try {
-            Pane loadedDateLocationPane = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/weatherInfo.fxml"));
+            Pane loadedDateLocationPane = FXMLLoader.load(getClass().getClassLoader().getResource("weatherInfo.fxml"));
             dateLocationPane.getChildren().add(loadedDateLocationPane);
 
-            Pane loadedCloudBarPane = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/cloudBar.fxml"));
+            Pane loadedCloudBarPane = FXMLLoader.load(getClass().getClassLoader().getResource("cloudBar.fxml"));
             cloudBarPane.getChildren().add(loadedCloudBarPane);
 
-            Pane loadedClearNightsPane = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/upcomingGoodWeather.fxml"));
+            Pane loadedClearNightsPane = FXMLLoader.load(getClass().getClassLoader().getResource("upcomingGoodWeather.fxml"));
             clearNightsPane.getChildren().add(loadedClearNightsPane);
 
-            Pane loadedNextWeekPane = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/upcomingDays.fxml"));
+            Pane loadedNextWeekPane = FXMLLoader.load(getClass().getClassLoader().getResource("upcomingDays.fxml"));
             nextWeekPane.getChildren().add(loadedNextWeekPane);
 
-            Pane loadedAstronomicalEventsPane = FXMLLoader.load(getClass().getResource("/Weatheronomy/view/upcomingEvents.fxml"));
+            Pane loadedAstronomicalEventsPane = FXMLLoader.load(getClass().getClassLoader().getResource("upcomingEvents.fxml"));
             astronomicalEventsPane.getChildren().add(loadedAstronomicalEventsPane);
         }
         catch (IOException ioe) {
