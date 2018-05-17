@@ -6,10 +6,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -39,8 +36,9 @@ public class OptionsWrapper {
             setUpHamburgerTransitions();
 
             //Set up home screen
-            AnchorPane homeContent = FXMLLoader.load(ClassLoader.getSystemResource("weatheronomyHome.fxml"));
-            centreAnchorPane.getChildren().add(homeContent);
+            //AnchorPane homeContent = FXMLLoader.load(ClassLoader.getSystemResource("weatheronomyHome.fxml"));
+            StackPane mainScreen = FXMLLoader.load(ClassLoader.getSystemResource("mainScreen.fxml"));
+            centreAnchorPane.getChildren().add(mainScreen);
             centreAnchorPane.getChildren().get(centreAnchorPane.getChildren().size() - 1).toBack();
         } catch (IOException e) {
             //Logger.getLogger(OptionsWrapper.class.getName()).log(Level.SEVERE, null, e);

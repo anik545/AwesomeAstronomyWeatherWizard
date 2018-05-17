@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane fx:id="mainScreen" fx:controller="Weatheronomy.controller.LightPollution" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <AnchorPane prefHeight="40.0" prefWidth="450.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="322.0" layoutY="7.0" prefHeight="26.0" prefWidth="113.0" text="Home" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
