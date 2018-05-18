@@ -36,10 +36,10 @@ public class OptionsWrapper {
             setUpHamburgerTransitions();
 
             //Set up home screen
-            //AnchorPane homeContent = FXMLLoader.load(ClassLoader.getSystemResource("weatheronomyHome.fxml"));
             StackPane mainScreen = FXMLLoader.load(ClassLoader.getSystemResource("mainScreen.fxml"));
             centreAnchorPane.getChildren().add(mainScreen);
-            centreAnchorPane.getChildren().get(centreAnchorPane.getChildren().size() - 1).toBack();
+            mainScreen.toBack(); //behind drawer (options menu)
+
         } catch (IOException e) {
             //Logger.getLogger(OptionsWrapper.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
@@ -54,7 +54,7 @@ public class OptionsWrapper {
             transition.setRate(transition.getRate()*-1);
             transition.play();
 
-            if(drawer.isOpened())
+            if(drawer.isOpened() || drawer.isOpening())
                 drawer.close();
             else
                 drawer.open();

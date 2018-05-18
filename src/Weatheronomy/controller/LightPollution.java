@@ -19,8 +19,12 @@ public class LightPollution {
         }
     }
 
-    public void goToHomeScreen() {
-        //TODO
+    public void goToHome() {
+        Navigation.displayHomePage();
+    }
+
+    public BorderPane getMainScreen() {
+        return mainScreen;
     }
 }
 

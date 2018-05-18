@@ -3,12 +3,16 @@ package Weatheronomy.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
 
 public class WeatheronomyHomeController {
+    @FXML
+    private AnchorPane outerHomeAnchor;
+
     @FXML
     private Pane dateLocationPane;
 
@@ -47,5 +51,9 @@ public class WeatheronomyHomeController {
             System.out.println("error");
             ioe.printStackTrace();
         }
+    }
+
+    public AnchorPane getHomeScreen() {
+        return outerHomeAnchor;
     }
 }

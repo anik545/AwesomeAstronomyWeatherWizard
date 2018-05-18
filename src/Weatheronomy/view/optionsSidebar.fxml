@@ -5,10 +5,10 @@
 
 <VBox fx:id="optionsVbox" prefHeight="610.0" prefWidth="300.0" style="-fx-background-color: #dddddd;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.OptionsSidebar">
    <children>
-      <JFXButton fx:id="homeB" prefHeight="46.0" prefWidth="300.0" text="Home" />
+      <JFXButton fx:id="homeB" prefHeight="46.0" prefWidth="300.0" text="Home" onAction="#goToHome"/>
       <JFXButton fx:id="astronomicalEventsB" prefHeight="46.0" prefWidth="300.0" text="Astronomical Events" />
       <JFXButton fx:id="weeklyForecastB" prefHeight="46.0" prefWidth="300.0" text="Weekly Forecast" />
-      <JFXButton fx:id="lightPollutionB" prefHeight="46.0" prefWidth="300.0" text="Light Pollution" />
+      <JFXButton fx:id="lightPollutionB" prefHeight="46.0" prefWidth="300.0" text="Light Pollution" onAction="#goToLightPollution"/>
       <JFXButton fx:id="settingsB" prefHeight="46.0" prefWidth="300.0" text="Settings" />
       <JFXButton fx:id="infoB" prefHeight="46.0" prefWidth="300.0" text="Info" />
    </children>

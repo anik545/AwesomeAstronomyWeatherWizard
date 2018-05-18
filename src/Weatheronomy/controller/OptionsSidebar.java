@@ -23,8 +23,11 @@ public class OptionsSidebar {
     @FXML
     private JFXButton infoB;
 
-    public void goToHome() {
 
+    //If anyone knows of a nicer way to call methods in an FXML file that aren't from its controller, that'd be nice,
+    //but I can't find any way other than using wrapper functions :(
+    public void goToHome() {
+        Navigation.displayHomePage();
     }
 
     public void goToAstronomicalEvents() {
@@ -36,7 +39,7 @@ public class OptionsSidebar {
     }
 
     public void goToLightPollution() {
-
+        Navigation.getInstance().displayLightPollutionPage();
     }
 
     public void goToSettings() {

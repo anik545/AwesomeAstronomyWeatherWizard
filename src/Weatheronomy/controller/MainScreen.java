@@ -10,19 +10,27 @@ import java.io.IOException;
 
 public class MainScreen {
     @FXML
-    StackPane stackPane;
+    private StackPane stackPane;
 
     @FXML
     public void initialize() {
         try {
-            Pane loadedHome = FXMLLoader.load(getClass().getClassLoader().getResource("weatheronomyHome.fxml"));
+            //load home screen
+            FXMLLoader homeLoader = new FXMLLoader(getClass().getClassLoader().getResource("weatheronomyHome.fxml"));
+            Pane loadedHome = homeLoader.load();
             stackPane.getChildren().add(loadedHome);
 
-            /*LightPollutionWebView lightPollution = new LightPollutionWebView(1.0, 1.0);
-            stackPane.getChildren().add(lightPollution);*/
+            //load light pollution screen
+            FXMLLoader pollutionLoader = new FXMLLoader(getClass().getClassLoader().getResource("lightPollution.fxml"));
+            BorderPane loadedLightPollution = pollutionLoader.load();
+            stackPane.getChildren().add(loadedLightPollution);
 
-            /*BorderPane loadedLightPollution = FXMLLoader.load(getClass().getClassLoader().getResource("lightPollution.fxml"));
-            //TODO : add light pollution*/
+            //Set up navigation fields
+            Navigation.getInstance().setHomePage(((WeatheronomyHomeController) homeLoader.getController()).getHomeScreen());
+            Navigation.getInstance().setLightPollutionPage(((LightPollution) pollutionLoader.getController()).getMainScreen());
+
+            //Set home screen as default
+            Navigation.getInstance().displayHomePage();
         }
         catch (IOException ioe) {
             ioe.printStackTrace();

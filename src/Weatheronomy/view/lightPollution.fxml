@@ -9,7 +9,7 @@
    <bottom>
       <AnchorPane prefHeight="40.0" prefWidth="450.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton layoutX="322.0" layoutY="7.0" prefHeight="26.0" prefWidth="113.0" text="Home" />
+            <JFXButton layoutX="322.0" layoutY="7.0" prefHeight="26.0" prefWidth="113.0" text="Home" onAction="#goToHome"/>
          </children>
       </AnchorPane>
    </bottom>
