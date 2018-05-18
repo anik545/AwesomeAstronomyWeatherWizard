@@ -2,8 +2,6 @@ package Weatheronomy.controller;
 
 import apis.LocationNotFoundException;
 import com.google.maps.errors.ApiException;
-import com.google.maps.errors.UnknownErrorException;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -21,7 +19,6 @@ import apis.Weather;
 import tk.plogitech.darksky.forecast.ForecastException;
 import tk.plogitech.darksky.forecast.GeoCoordinates;
 import tk.plogitech.darksky.forecast.model.Currently;
-
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -103,14 +100,14 @@ public class WeatherInfo implements Initializable {
         Latitude = coords.latitude().value();
         LongitudeTF.setPromptText(coords.longitude().value().toString());
         LatitudeTF.setPromptText(coords.latitude().value().toString());
-            try {
-                loadNow2(Date.from(Instant.now()));
-            } catch (ForecastException e) {
-                ErrorBox.setText("Location Data Not Valid!");
-                e.printStackTrace();
-            }
+        try {
+            loadNow2(Date.from(Instant.now()));
+        } catch (ForecastException e) {
+            ErrorBox.setText("Location Data Not Valid!");
+            e.printStackTrace();
         }
     }
+}
 
     @FXML
     void inputLocation(ActionEvent event){
