@@ -63,3 +63,6 @@ lib/
 
 *.cfg
 *.properties
+
+.idea/misc.xml
+AwesomeAstronomyWeatherWizard.iml

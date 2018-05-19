@@ -6,10 +6,7 @@ import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -39,9 +36,10 @@ public class OptionsWrapper {
             setUpHamburgerTransitions();
 
             //Set up home screen
-            AnchorPane homeContent = FXMLLoader.load(ClassLoader.getSystemResource("weatheronomyHome.fxml"));
-            centreAnchorPane.getChildren().add(homeContent);
-            centreAnchorPane.getChildren().get(centreAnchorPane.getChildren().size() - 1).toBack();
+            StackPane mainScreen = FXMLLoader.load(ClassLoader.getSystemResource("mainScreen.fxml"));
+            centreAnchorPane.getChildren().add(mainScreen);
+            mainScreen.toBack(); //behind drawer (options menu)
+
         } catch (IOException e) {
             //Logger.getLogger(OptionsWrapper.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
@@ -56,7 +54,7 @@ public class OptionsWrapper {
             transition.setRate(transition.getRate()*-1);
             transition.play();
 
-            if(drawer.isOpened())
+            if(drawer.isOpened() || drawer.isOpening())
                 drawer.close();
             else
                 drawer.open();
