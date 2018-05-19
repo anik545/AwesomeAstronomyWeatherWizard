@@ -1,4 +1,4 @@
 package Weatheronomy.controller;
 
-public class Controller {
+public class UpcomingGoodWeather {
 }
