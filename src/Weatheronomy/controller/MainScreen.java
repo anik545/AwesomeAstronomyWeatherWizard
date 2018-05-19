@@ -22,7 +22,7 @@ public class MainScreen {
 
             //load light pollution screen
             FXMLLoader pollutionLoader = new FXMLLoader(getClass().getClassLoader().getResource("lightPollution.fxml"));
-            BorderPane loadedLightPollution = pollutionLoader.load();
+            Pane loadedLightPollution = pollutionLoader.load();
             stackPane.getChildren().add(loadedLightPollution);
 
             //Set up navigation fields

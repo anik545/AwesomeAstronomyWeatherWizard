@@ -77,6 +77,8 @@ public class WeatherInfo implements Initializable {
     @FXML
     private Label ErrorBox;
 
+    private WeatheronomyHomeController updateController;
+
     @FXML
     void LoadLocationCity(ActionEvent event) {
         String city = CityTF.getText();

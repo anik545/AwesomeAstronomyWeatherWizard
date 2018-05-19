@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #cfcfcf, #303030; -fx-background-insets: 0, 1 1 1 1;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatherInfo">
+<AnchorPane prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatherInfo">
    <children>
       <JFXButton layoutX="397.0" layoutY="62.0" onAction="#inputLocation" prefHeight="25.0" prefWidth="39.0" ripplerFill="#00ccff" style="-fx-background-color: #cfcfcf;" text="GO!" textFill="#303030" />
       <Label fx:id="timeBox" layoutX="339.0" layoutY="8.0" prefHeight="49.0" prefWidth="97.0" text="Time" textFill="WHITE">

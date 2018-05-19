@@ -88,4 +88,8 @@ public class WeatheronomyHomeController {
     public AnchorPane getHomeScreen() {
         return outerHomeAnchor;
     }
+
+    public void updateLocation() {
+
+    }
 }

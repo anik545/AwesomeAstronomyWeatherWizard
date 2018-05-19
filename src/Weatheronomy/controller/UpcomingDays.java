@@ -80,6 +80,7 @@ public class UpcomingDays {
 		scroller.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scroller.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scroller.setMaxWidth(450);
+		scroller.setStyle("-fx-background-color:transparent;");
 		finalPane.setBackground(Background.EMPTY);
 		finalPane.getChildren().add(scroller);
 	}
