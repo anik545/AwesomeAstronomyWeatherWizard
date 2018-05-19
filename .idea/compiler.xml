@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="AwesomeAstronomyWeatherWizard_main" target="1.9" />
       <module name="AwesomeAstronomyWeatherWizard_test" target="1.9" />
+      <module name="Programming-AwesomeAstronomyWeatherWizard_main" target="1.9" />
+      <module name="Programming-AwesomeAstronomyWeatherWizard_test" target="1.9" />
     </bytecodeTargetLevel>
   </component>
 </project>

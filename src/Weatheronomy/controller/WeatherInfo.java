@@ -19,6 +19,7 @@ import apis.Weather;
 import tk.plogitech.darksky.forecast.ForecastException;
 import tk.plogitech.darksky.forecast.GeoCoordinates;
 import tk.plogitech.darksky.forecast.model.Currently;
+
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -79,45 +80,44 @@ public class WeatherInfo implements Initializable {
     @FXML
     void LoadLocationCity(ActionEvent event) {
         String city = CityTF.getText();
-        if(city.equals("")){}
-        else{
-            CityTF.setPromptText(city); CityTF.clear();
+        if (!city.equals("")) {
+            CityTF.setPromptText(city);
+            CityTF.clear();
             GeoCoordinates coords = null;
             try {
                 coords = Location.coordFromCity(city);
             } catch (LocationNotFoundException e) {
                 ErrorBox.setText("Location Input is Invalid!");
                 e.printStackTrace();
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             } catch (ApiException e) {
                 ErrorBox.setText("There is an Error with our Backend!");
                 e.printStackTrace();
-            } catch (IOException e) {
+            }
+            Longitude = coords.longitude().value();
+            Latitude = coords.latitude().value();
+            LongitudeTF.setPromptText(coords.longitude().value().toString());
+            LatitudeTF.setPromptText(coords.latitude().value().toString());
+            try {
+                loadNow2(Date.from(Instant.now()));
+            } catch (ForecastException e) {
+                ErrorBox.setText("Location Data Not Valid!");
                 e.printStackTrace();
             }
-        Longitude = coords.longitude().value();
-        Latitude = coords.latitude().value();
-        LongitudeTF.setPromptText(coords.longitude().value().toString());
-        LatitudeTF.setPromptText(coords.latitude().value().toString());
-        try {
-            loadNow2(Date.from(Instant.now()));
-        } catch (ForecastException e) {
-            ErrorBox.setText("Location Data Not Valid!");
-            e.printStackTrace();
         }
     }
-}
 
     @FXML
-    void inputLocation(ActionEvent event){
-        if(LongitudeTF.getText().equals("") || LatitudeTF.getText().equals("")){}
-        else{
-        LongitudeTF.setPromptText(LongitudeTF.getText());
-        LatitudeTF.setPromptText(LatitudeTF.getText());
-        Longitude = Double.parseDouble(LongitudeTF.getPromptText());
-        Latitude = Double.parseDouble(LatitudeTF.getPromptText());
-        LongitudeTF.clear(); LatitudeTF.clear();
+    void inputLocation(ActionEvent event) {
+        if (LongitudeTF.getText().equals("") || LatitudeTF.getText().equals("")) {
+        } else {
+            LongitudeTF.setPromptText(LongitudeTF.getText());
+            LatitudeTF.setPromptText(LatitudeTF.getText());
+            Longitude = Double.parseDouble(LongitudeTF.getPromptText());
+            Latitude = Double.parseDouble(LatitudeTF.getPromptText());
+            LongitudeTF.clear();
+            LatitudeTF.clear();
             try {
                 String city = Location.cityFromCoord(Longitude, Latitude);
                 CityTF.setPromptText(city);
@@ -156,16 +156,16 @@ public class WeatherInfo implements Initializable {
         Currently current = Weather.getCurrentlyAtTime(time, Longitude, Latitude);
         CloudCoverage.setText(current.getCloudCover().toString());
         Visibility.setText(current.getVisibility().toString());
-        Double AppTemperature = (((current.getApparentTemperature() - 32)*(5))/9);
+        Double AppTemperature = (((current.getApparentTemperature() - 32) * (5)) / 9);
         Long AppTemp1 = Math.round(AppTemperature);
         FeelsLike.setText(AppTemp1.toString());
         Rain.setText(current.getPrecipProbability().toString());
-        Double Temperature = (((current.getTemperature() - 32)*(5))/9);
+        Double Temperature = (((current.getTemperature() - 32) * (5)) / 9);
         Long Temperature1 = Math.round(Temperature);
         Temp.setText(Temperature1.toString());
         IconDescriptor.setText(current.getIcon());
         WeatherIconMain.setIconCode(Icons.getOrDefault(current.getIcon(), WeatherIcons.ALIEN));
-        Wind.setText(current.getWindSpeed().toString() +" / "+ current.getWindBearing().toString());
+        Wind.setText(current.getWindSpeed().toString() + " / " + current.getWindBearing().toString());
         ErrorBox.setText("");
     }
 
@@ -205,13 +205,13 @@ public class WeatherInfo implements Initializable {
         Icons.put("clear-day", WeatherIcons.DAY_SUNNY);
         Icons.put("clear-night", WeatherIcons.NIGHT_CLEAR);
         Icons.put("partly-cloudy-day", WeatherIcons.DAY_CLOUDY_HIGH);
-        Icons.put("partly-cloudy-night",WeatherIcons.NIGHT_CLOUDY_HIGH);
-        Icons.put("cloudy",WeatherIcons.CLOUDY);
-        Icons.put("rain",WeatherIcons.RAIN);
+        Icons.put("partly-cloudy-night", WeatherIcons.NIGHT_CLOUDY_HIGH);
+        Icons.put("cloudy", WeatherIcons.CLOUDY);
+        Icons.put("rain", WeatherIcons.RAIN);
         Icons.put("sleet", WeatherIcons.SLEET);
         Icons.put("snow", WeatherIcons.SNOW);
-        Icons.put("wind",WeatherIcons.WINDY);
-        Icons.put("fog",WeatherIcons.FOG);
+        Icons.put("wind", WeatherIcons.WINDY);
+        Icons.put("fog", WeatherIcons.FOG);
 
         try {
             loadNow2(Date.from(Instant.now()));

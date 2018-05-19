@@ -6,30 +6,30 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="outerHomeAnchor" prefHeight="640.0" prefWidth="450.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
+<AnchorPane fx:id="outerHomeAnchor" prefHeight="640.0"   stylesheets="@styles.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
    <children>
       <ScrollPane hbarPolicy="NEVER" layoutY="0.6000000238418579" prefHeight="640.0" prefWidth="450.0" vbarPolicy="ALWAYS">
          <content>
             <VBox prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #303030;">
                <children>
-                  <Pane fx:id="dateLocationPane" prefHeight="200.0" prefWidth="200.0" />
-                  <Pane fx:id="cloudBarPane" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane fx:id="dateLocationPane"  minHeight="250"  prefWidth="200.0" />
+                  <Pane fx:id="cloudBarPane" minHeight="150" maxWidth="400"/>
                   <VBox>
                      <children>
                         <Label styleClass="text-heading" stylesheets="@styles.css" text="Clear Nights Soon" />
-                        <Pane fx:id="clearNightsPane" prefHeight="200.0" prefWidth="200.0" />
+                        <Pane fx:id="clearNightsPane"    maxWidth="200.0" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label styleClass="text-heading" stylesheets="@styles.css" text="Next Week" />
-                        <Pane fx:id="nextWeekPane" prefHeight="200.0" prefWidth="200.0" />
+                        <Pane fx:id="nextWeekPane"    prefWidth="200.0" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label prefHeight="18.0" prefWidth="319.0" styleClass="text-heading" stylesheets="@styles.css" text="Astronomical Events" />
-                        <Pane fx:id="astronomicalEventsPane" prefHeight="200.0" prefWidth="200.0" />
+                        <Pane fx:id="astronomicalEventsPane"    prefWidth="200.0" />
                      </children>
                   </VBox>
                </children>

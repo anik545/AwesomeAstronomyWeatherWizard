@@ -11,7 +11,7 @@ sourceSets {
   }
 }
 
-mainClassName = 'Weatheronomy.Test.UpcomingDaysTest'
+mainClassName = 'Weatheronomy.Main'
 
 repositories {
   mavenCentral()
