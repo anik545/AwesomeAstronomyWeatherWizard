@@ -11,14 +11,14 @@ sourceSets {
   }
 }
 
-mainClassName = 'Weatheronomy.Main'
+mainClassName = 'Weatheronomy.Test.UpcomingDaysTest'
 
 repositories {
   mavenCentral()
 }
 
-sourceCompatibility = 10
-targetCompatibility = 10
+sourceCompatibility = 9
+targetCompatibility = 9
 
 dependencies {
   compile 'com.jfoenix:jfoenix:9.0.3' // Java 9
