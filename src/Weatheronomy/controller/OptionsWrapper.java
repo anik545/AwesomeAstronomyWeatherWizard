@@ -33,12 +33,17 @@ public class OptionsWrapper {
             //Set up side panel
             VBox sidePanelContent = FXMLLoader.load(ClassLoader.getSystemResource("optionsSidebar.fxml"));
             drawer.setSidePane(sidePanelContent);
-            setUpHamburgerTransitions();
 
             //Set up home screen
             StackPane mainScreen = FXMLLoader.load(ClassLoader.getSystemResource("mainScreen.fxml"));
             centreAnchorPane.getChildren().add(mainScreen);
-            mainScreen.toBack(); //behind drawer (options menu)
+            mainScreen.toFront(); //behind drawer (options menu)
+
+            setUpHamburgerTransitions();
+
+            drawer.setOnDrawerClosed(e-> mainScreen.toFront());
+            drawer.setOnDrawerOpened(e-> mainScreen.toBack());
+            drawer.setOnDrawerOpening(e-> mainScreen.toBack());
 
         } catch (IOException e) {
             //Logger.getLogger(OptionsWrapper.class.getName()).log(Level.SEVERE, null, e);
@@ -58,6 +63,7 @@ public class OptionsWrapper {
                 drawer.close();
             else
                 drawer.open();
-        });
+            }
+        );
     }
 }
