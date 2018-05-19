@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -71,7 +72,7 @@ public class UpcomingDays {
 
 			daysGrid.add(controllers[i].content, i, 0);
 		}
-		backgroundpane.setStyle("-fx-background-color: #cfcfcf");
+		backgroundpane.setStyle("-fx-background-color: #303030");
 		backgroundpane.setPadding(new javafx.geometry.Insets(2,5,2,5));
 		backgroundpane.add(daysGrid, 0, 0);
 
@@ -79,6 +80,7 @@ public class UpcomingDays {
 		scroller.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scroller.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scroller.setMaxWidth(450);
+		finalPane.setBackground(Background.EMPTY);
 		finalPane.getChildren().add(scroller);
 	}
 

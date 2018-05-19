@@ -11,7 +11,7 @@
 
 <VBox prefHeight="100.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.UpcomingDaysDay">
    <children>
-      <GridPane fx:id="content" prefHeight="115.0" prefWidth="100.0" style="-fx-background-fill: white, #040404; -fx-background-insets: 0, 1 1 1 1;">
+      <GridPane fx:id="content" prefHeight="115.0" prefWidth="100.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -20,11 +20,11 @@
           <RowConstraints maxHeight="45.599981689453124" minHeight="10.0" prefHeight="29.599981689453116" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-             <Pane id="icon" fx:id="icon" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #aaaaaa, #444444; -fx-background-insets: 0, 1 1 0 1;">
+             <Pane id="icon" fx:id="icon" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <FontIcon fx:id="ikon" iconColor="#cfcfcf" iconSize="40" layoutX="4.0" layoutY="51.0" textAlignment="CENTER" wrappingWidth="90.4000244140625" />
                </children></Pane>
-            <GridPane style="-fx-background-color: #aaaaaa, #444444; -fx-background-insets: 0, 0 1 1 1;" GridPane.rowIndex="1">
+            <GridPane  GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="66.0" minWidth="10.0" prefWidth="45.9999755859375" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="45.999973678588866" minWidth="0.0" prefWidth="12.000012207031254" />

@@ -74,6 +74,7 @@ public class WeatheronomyHomeController {
             UpcomingDays nextWeek = new UpcomingDays(lon, lat);
             Pane loadedNextWeekPane = nextWeek.finalPane;
             nextWeekPane.getChildren().add(loadedNextWeekPane);
+            nextWeekPane.setMinHeight(80);
 
             Pane loadedAstronomicalEventsPane = FXMLLoader.load(getClass().getClassLoader().getResource("upcomingEvents.fxml"));
             astronomicalEventsPane.getChildren().add(loadedAstronomicalEventsPane);
