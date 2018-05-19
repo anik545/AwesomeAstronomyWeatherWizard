@@ -5,6 +5,7 @@ import de.jensd.fx.glyphs.weathericons.WeatherIcon;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -24,6 +25,7 @@ import java.util.Map;
 
 public class UpcomingDays {
 	public GridPane backgroundpane = new GridPane();
+	public Pane finalPane = new Pane();
 	public GridPane daysGrid = new GridPane();
 	public Parent[] days;
 	public UpcomingDaysDay[] controllers;
@@ -72,6 +74,12 @@ public class UpcomingDays {
 		backgroundpane.setStyle("-fx-background-color: #cfcfcf");
 		backgroundpane.setPadding(new javafx.geometry.Insets(2,5,2,5));
 		backgroundpane.add(daysGrid, 0, 0);
+
+		ScrollPane scroller = new ScrollPane(backgroundpane);
+		scroller.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		scroller.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		scroller.setMaxWidth(450);
+		finalPane.getChildren().add(scroller);
 	}
 
 }

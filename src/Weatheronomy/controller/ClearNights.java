@@ -28,7 +28,7 @@ public class ClearNights {
 
 	public double lon, lat;
 
-	private int nightCount = 0;
+	public int nightCount = 0;
 
 	public ClearNights(double lo, double la) throws IOException, ForecastException {
 
@@ -76,7 +76,7 @@ public class ClearNights {
 			controllers[i].setDate(Date.from(Instant.now().plusSeconds(60*60*24*(cNDates.get(iWeather)))));
 			controllers[i].setCoverPercentage(iWeather.getCloudCover());
 			controllers[i].setIcon(sugIkons.get(suggIkon));
-			controllers[i].content.setPadding(new javafx.geometry.Insets(1,10,1,10));
+			controllers[i].content.setPadding(new javafx.geometry.Insets(1,1,1,1));
 			nightsGrid.add(controllers[i].content, 0, i);
 			i++;
 		}
@@ -91,7 +91,7 @@ public class ClearNights {
 			controllers[i].setDate(null);
 			controllers[i].setCoverPercentage(Double.POSITIVE_INFINITY);
 			controllers[i].setIcon(null);
-			controllers[i].content.setPadding(new javafx.geometry.Insets(1,10,1,10));
+			controllers[i].content.setPadding(new javafx.geometry.Insets(1,4,1,4));
 			nightsGrid.add(controllers[i].content, 0, i);
 		}
 

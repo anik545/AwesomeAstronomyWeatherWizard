@@ -23,7 +23,7 @@ public class ClearNightsNight {
 	public Text weekday, date, coverPercentage;
 
 	@FXML
-	public GridPane content;
+	public Pane content;
 
 	@FXML
 	public FontIcon ikon;

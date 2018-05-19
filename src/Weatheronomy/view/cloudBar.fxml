@@ -9,16 +9,16 @@
 
 <AnchorPane maxHeight="80.0" minHeight="50.0" minWidth="200.0" layoutX="100" prefHeight="80.0" prefWidth="440.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.CloudBar">
    <children>
-      <HBox fx:id="cloudCover" maxHeight="45.0" prefHeight="45.0" prefWidth="200.0" style="-fx-border-radius: 10px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Pane fx:id="tempGraph" blendMode="MULTIPLY" maxHeight="45.0" maxWidth="400.0" prefHeight="45.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <HBox fx:id="cloudCover" maxHeight="45.0" prefHeight="45.0" prefWidth="200.0" style="-fx-border-radius: 10px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Pane fx:id="tempGraph" blendMode="MULTIPLY" maxHeight="45.0" maxWidth="400.0" prefHeight="45.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <Line fx:id="currentTime" endY="45.0" layoutX="50.0" stroke="RED" strokeWidth="2.0" />
             <Line fx:id="selectedTimeBar" endY="45.0" stroke="AQUA" visible="false" />
          </children>
       </Pane>
-      <Text fx:id="startTimeText" fill="AQUA" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="40.0" />
+      <Text fx:id="startTimeText" fill="AQUA" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" />
       <Text fx:id="endTimeText" fill="AQUA" layoutX="451.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12:00" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
-      <FontIcon fx:id="startTimeIcon" fill="AQUA" iconLiteral="wi-sunrise" layoutX="56.0" layoutY="72.0" text="" AnchorPane.bottomAnchor="3.5" AnchorPane.leftAnchor="80.0" />
+      <FontIcon fx:id="startTimeIcon" fill="AQUA" iconLiteral="wi-sunrise" layoutX="56.0" layoutY="72.0" text="" AnchorPane.bottomAnchor="3.5" AnchorPane.leftAnchor="50.0" />
       <FontIcon fx:id="endTimeIcon" iconColor="AQUA" iconLiteral="wi-sunset" layoutX="66.0" layoutY="82.0" text="" AnchorPane.bottomAnchor="3.5" AnchorPane.rightAnchor="50.0" />
    </children>
 </AnchorPane>

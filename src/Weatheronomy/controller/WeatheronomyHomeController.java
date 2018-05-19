@@ -69,14 +69,14 @@ public class WeatheronomyHomeController {
             ClearNights clearNights = new ClearNights(lon, lat);
             Pane loadedClearNightsPane = clearNights.backgroundpane;
             clearNightsPane.getChildren().add(loadedClearNightsPane);
+            clearNightsPane.setMinHeight(clearNights.nightCount*32);
 
-            Pane loadedNextWeekPane = FXMLLoader.load(getClass().getClassLoader().getResource("upcomingDays.fxml"));
+            UpcomingDays nextWeek = new UpcomingDays(lon, lat);
+            Pane loadedNextWeekPane = nextWeek.finalPane;
             nextWeekPane.getChildren().add(loadedNextWeekPane);
 
             Pane loadedAstronomicalEventsPane = FXMLLoader.load(getClass().getClassLoader().getResource("upcomingEvents.fxml"));
             astronomicalEventsPane.getChildren().add(loadedAstronomicalEventsPane);
-
-
         }
         catch (IOException ioe) {
             System.out.println("error");
