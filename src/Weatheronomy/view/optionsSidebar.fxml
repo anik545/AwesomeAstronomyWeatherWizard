@@ -8,6 +8,6 @@
       <JFXButton fx:id="homeB" prefHeight="46.0" prefWidth="300.0" text="Home" onAction="#goToHome"/>
       <JFXButton fx:id="weeklyForecastB" prefHeight="46.0" prefWidth="300.0" text="Weekly Forecast" />
       <JFXButton fx:id="lightPollutionB" prefHeight="46.0" prefWidth="300.0" text="Light Pollution" onAction="#goToLightPollution"/>
-      <JFXButton fx:id="infoB" prefHeight="46.0" prefWidth="300.0" text="Info" />
+      <JFXButton fx:id="infoB" prefHeight="46.0" prefWidth="300.0" text="Info" onAction="#goToInfo" />
    </children>
 </VBox>
