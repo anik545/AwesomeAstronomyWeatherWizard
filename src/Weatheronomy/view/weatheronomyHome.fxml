@@ -30,12 +30,6 @@
                         <Pane fx:id="nextWeekPane"    prefWidth="200.0" />
                      </children>
                   </VBox>
-                  <VBox>
-                     <children>
-                        <Label prefHeight="18.0" prefWidth="319.0" styleClass="text-heading" stylesheets="@styles.css" text="Astronomical Events" />
-                        <Pane fx:id="astronomicalEventsPane"    prefWidth="200.0" />
-                     </children>
-                  </VBox>
                </children>
             </VBox>
          </content>
