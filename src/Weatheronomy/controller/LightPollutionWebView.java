@@ -24,11 +24,11 @@ public class LightPollutionWebView extends StackPane {
         // Start webView
         lightMap = new WebView();
         lightMap.setMinWidth(450);
-        lightMap.setMinHeight(640);
+        lightMap.setMinHeight(500);
         lightMap.setMaxWidth(450);
-        lightMap.setMaxHeight(640);
+        lightMap.setMaxHeight(600);
         lightMap.setPrefWidth(450);
-        lightMap.setPrefHeight(640);
+        lightMap.setPrefHeight(600);
 
         webEngine = lightMap.getEngine();
 
