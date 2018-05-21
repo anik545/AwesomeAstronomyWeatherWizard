@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="outerHomeAnchor" style="-fx-background-color: #303030;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutY="0.6000000238418579" prefHeight="640.0" prefWidth="450.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+      <ScrollPane hbarPolicy="NEVER" layoutY="0.6000000238418579" prefHeight="641.0" prefWidth="450.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
          <content>
             <VBox prefWidth="450.0" spacing="25" style="-fx-background-color: #303030;" AnchorPane.leftAnchor="40">
                <children>
