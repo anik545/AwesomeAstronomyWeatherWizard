@@ -34,7 +34,6 @@ public class OptionsSidebar {
     //but I can't find any way other than using wrapper functions :(
     public void goToHome() {
         Navigation.displayHomePage();
-
     }
 
     public void goToAstronomicalEvents() {

@@ -91,7 +91,6 @@ public class WeatherInfo implements Initializable {
                 coords = Location.coordFromCity(city);
             } catch (LocationNotFoundException e) {
                 ErrorBox.setText("Location Input is Invalid!");
-                e.printStackTrace();
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             } catch (ApiException e) {
@@ -131,6 +130,7 @@ public class WeatherInfo implements Initializable {
                 String city = Location.cityFromCoord(Longitude, Latitude);
                 CityTF.setPromptText(city);
             } catch (LocationNotFoundException e) {
+                CityTF.setPromptText("Who knows?");
                 ErrorBox.setText("Location Input is Invalid!");
                 e.printStackTrace();
             } catch (InterruptedException e) {

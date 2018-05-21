@@ -69,7 +69,7 @@ public class LightPollution {
     public void move(double lat, double lng) {
         webEngine.executeScript(
             String.format(
-                "map.getView().animate([%d, %d], 0);",
+                "map.getView().animate({centre: [%d, %d], duration: 0, zoom:6});",
                 (int) lng * 100000,
                 (int) lat * 100000
             )

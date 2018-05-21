@@ -26,8 +26,12 @@ public class MainScreen {
             stackPane.getChildren().add(loadedLightPollution);
 
             //Set up navigation fields
-            Navigation.getInstance().setHomePage(((WeatheronomyHomeController) homeLoader.getController()).getHomeScreen());
-            Navigation.getInstance().setLightPollutionPage(((LightPollution) pollutionLoader.getController()).getMainScreen());
+            Navigation.getInstance().setHomePage(
+                ((WeatheronomyHomeController) homeLoader.getController()).getHomeScreen(),
+                homeLoader.getController());
+            Navigation.getInstance().setLightPollutionPage(
+                ((LightPollution) pollutionLoader.getController()).getMainScreen(),
+                pollutionLoader.getController());
 
             //Set home screen as default
             Navigation.getInstance().displayHomePage();

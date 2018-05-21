@@ -9,11 +9,15 @@ public class Navigation {
     private static Navigation instance;
 
     private static AnchorPane homePage;
+    private static WeatheronomyHomeController homeController;
+
     private static Pane lightPollutionPage;
+    private static LightPollution lightPollutionController;
 
     public static void displayLightPollutionPage() {
         homePage.setVisible(false);
         lightPollutionPage.setVisible(true);
+        lightPollutionController.move(homeController.getLat(), homeController.getLong());
     }
 
     public static void displayHomePage() {
@@ -28,11 +32,13 @@ public class Navigation {
         return instance;
     }
 
-    public void setLightPollutionPage(Pane lightPollutionPage) {
+    public void setLightPollutionPage(Pane lightPollutionPage, LightPollution lightPollutionController) {
         this.lightPollutionPage = lightPollutionPage;
+        this.lightPollutionController = lightPollutionController;
     }
 
-    public void setHomePage(AnchorPane homePage) {
+    public void setHomePage(AnchorPane homePage, WeatheronomyHomeController homeController) {
         this.homePage = homePage;
+        this.homeController = homeController;
     }
 }

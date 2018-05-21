@@ -43,7 +43,7 @@ public class OptionsWrapper {
             mainScreen.toBack(); //behind drawer (options menu)
 
             setUpHamburgerTransitions();
-            // Close drawer if buttons clicked
+            // Close drawer if navigation buttons are clicked
             sidePanelContent.getChildren().stream().forEach(n -> n.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawwer()));
 
             // Pass mouse clicks through when drawer is closed

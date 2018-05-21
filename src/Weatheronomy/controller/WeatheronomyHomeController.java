@@ -135,4 +135,7 @@ public class WeatheronomyHomeController {
     public void currentTimeUpdateListener(Instant time) throws ForecastException {
         dateLocationPaneController.loadNow2(Date.from(time));
     }
+
+    public double getLat() {return dateLocationPaneController.Latitude;}
+    public double getLong() {return dateLocationPaneController.Longitude;}
 }
