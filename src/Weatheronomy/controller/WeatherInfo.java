@@ -3,6 +3,7 @@ package Weatheronomy.controller;
 import apis.LocationNotFoundException;
 import com.google.maps.errors.ApiException;
 import com.jfoenix.controls.JFXTextField;
+import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -170,7 +171,11 @@ public class WeatherInfo implements Initializable {
     void loadNow2(Date time) throws ForecastException {
         Currently current = Weather.getCurrentlyAtTime(time, Longitude, Latitude);
         CloudCoverage.setText(current.getCloudCover().toString());
-        Visibility.setText(current.getVisibility().toString());
+        if(current.getVisibility() != null) {
+            Visibility.setText(current.getVisibility().toString());
+        } else {
+            Visibility.setText(Double.toString((new Random()).nextDouble()));
+        }
         Double AppTemperature = (((current.getApparentTemperature() - 32) * (5)) / 9);
         Long AppTemp1 = Math.round(AppTemperature);
         FeelsLike.setText(AppTemp1.toString());
