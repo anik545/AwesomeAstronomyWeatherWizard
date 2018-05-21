@@ -5,3 +5,8 @@
     -fx-font-size: 12pt;
     -fx-font-family: "Calibri";
 }
+
+
+.jfx-hamburger StackPane {
+    -fx-background-color: white;
+}
