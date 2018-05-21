@@ -31,8 +31,8 @@ import java.util.ResourceBundle;
 
 public class WeatherInfo implements Initializable {
 
-    private Double Longitude = 0.091732;
-    private Double Latitude = 52.210891;
+    protected Double Longitude = 0.091732;
+    protected Double Latitude = 52.210891;
     private Map<String, WeatherIcons> Icons = new HashMap<>();
 
     @FXML
@@ -77,7 +77,7 @@ public class WeatherInfo implements Initializable {
     @FXML
     private Label ErrorBox;
 
-    private WeatheronomyHomeController updateController;
+    private WeatheronomyHomeController locationUpdateListener;
 
     @FXML
     void LoadLocationCity(ActionEvent event) {
@@ -107,13 +107,19 @@ public class WeatherInfo implements Initializable {
                 ErrorBox.setText("Location Data Not Valid!");
                 e.printStackTrace();
             }
+            try {
+                locationUpdateListener.locationUpdateListener();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ForecastException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @FXML
     void inputLocation(ActionEvent event) {
-        if (LongitudeTF.getText().equals("") || LatitudeTF.getText().equals("")) {
-        } else {
+        if (!(LongitudeTF.getText().equals("") || LatitudeTF.getText().equals(""))) {
             LongitudeTF.setPromptText(LongitudeTF.getText());
             LatitudeTF.setPromptText(LatitudeTF.getText());
             Longitude = Double.parseDouble(LongitudeTF.getPromptText());
@@ -139,6 +145,13 @@ public class WeatherInfo implements Initializable {
                 loadNow2(Date.from(Instant.now()));
             } catch (ForecastException e) {
                 ErrorBox.setText("Location Data Not Valid!");
+                e.printStackTrace();
+            }
+            try {
+                locationUpdateListener.locationUpdateListener();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ForecastException e) {
                 e.printStackTrace();
             }
         }
@@ -221,5 +234,9 @@ public class WeatherInfo implements Initializable {
             ErrorBox.setText("Default Location Data Not Valid!");
             e.printStackTrace();
         }
+    }
+
+    public void setLocationUpdateListener(WeatheronomyHomeController locationUpdateListener) {
+        this.locationUpdateListener = locationUpdateListener;
     }
 }

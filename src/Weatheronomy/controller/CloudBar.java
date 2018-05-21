@@ -46,9 +46,10 @@ public class CloudBar extends Pane {
     @FXML FontIcon endTimeIcon;
     @FXML Line selectedTimeBar;
 
-    Line[] timeBars;
-    Pane[] cloudBars;
+    Line[] timeBars = new Line[0];
+    Pane[] cloudBars = new Pane[0];
 
+    private WeatheronomyHomeController timeUpdateListener;
 
     public void initialize() {
         cloudCover.widthProperty().addListener((obs, oldVal, newVal) ->
@@ -66,7 +67,15 @@ public class CloudBar extends Pane {
 
     }
 
-    public void setBoundryTimes(Instant startTime, Instant endTime, Ikon startIcon, Ikon endIcon) {
+    public void setTimeUpdateListener(WeatheronomyHomeController timeUpdateListener) {
+        this.timeUpdateListener = timeUpdateListener;
+    }
+
+    public void updateTimes(
+        Instant startTime, Instant endTime,
+        Ikon startIcon, Ikon endIcon,
+        double lng, double lat
+    ) {
         this.startTime = startTime;
         this.endTime = endTime;
 
@@ -81,7 +90,7 @@ public class CloudBar extends Pane {
 
         startCurrentTimeBar();
         setTimeBars();
-        setCloudBars();
+        setCloudBars(lng, lat);
 
         updateTimeBars();
         updateCloudBars();
@@ -90,6 +99,7 @@ public class CloudBar extends Pane {
     private void setTimeBars() {
         updateCurrentTime();
 
+        tempGraph.getChildren().removeAll(timeBars);
 
         timeBars = new Line[hourDivisions() + 2];
 
@@ -118,11 +128,12 @@ public class CloudBar extends Pane {
         }
     }
 
-    private void setCloudBars() {
+    private void setCloudBars(double lng, double lat) {
+        cloudCover.getChildren().removeAll(cloudBars);
         cloudBars = new Pane[hourDivisions() + 1];
         List<Double> cloudCovers;
         try {
-            cloudCovers = Weather.getCloudCoversFromTime(Date.from(startTime), -7.778320310000026, 53.2734);
+            cloudCovers = Weather.getCloudCoversFromTime(Date.from(startTime), lng, lat);
         } catch (ForecastException e) {
             System.out.println("couldn't get cloud cover");
             cloudCovers = new ArrayList(Arrays.asList(new double[24]));
@@ -213,5 +224,11 @@ public class CloudBar extends Pane {
         // Set current time bar
         selectedTimeBar.setLayoutX(e.getX());
         selectedTimeBar.setVisible(true);
+
+        try {
+            timeUpdateListener.currentTimeUpdateListener(selectedTime);
+        } catch (ForecastException e1) {
+            e1.printStackTrace();
+        }
     }
 }
