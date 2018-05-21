@@ -17,6 +17,7 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World");
 
         primaryStage.setScene(new Scene(root, 450, 700));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

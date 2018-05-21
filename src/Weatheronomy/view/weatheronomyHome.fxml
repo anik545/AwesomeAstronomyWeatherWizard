@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.geometry.Insets?>
-<AnchorPane fx:id="outerHomeAnchor" prefHeight="640.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
+<AnchorPane fx:id="outerHomeAnchor" style="-fx-background-color: #303030;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.WeatheronomyHomeController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutY="0.6000000238418579" prefHeight="640.0" prefWidth="450.0" vbarPolicy="NEVER" style="-fx-background-color: transparent;">
+      <ScrollPane hbarPolicy="NEVER" layoutY="0.6000000238418579" prefHeight="640.0" prefWidth="450.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
          <content>
-            <VBox  AnchorPane.leftAnchor="40" prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: #303030;" spacing="25">
-               <!--<padding>
-                  <Insets left="15"/>
-               </padding>-->
+            <VBox prefWidth="450.0" spacing="25" style="-fx-background-color: #303030;" AnchorPane.leftAnchor="40">
                <children>
-                  <Pane fx:id="dateLocationPane"  minHeight="250"  prefWidth="200.0" />
-                  <Pane fx:id="cloudBarPane" minHeight="150" maxWidth="400"/>
-                  <VBox>
-                     <children>
-                        <Label styleClass="text-heading" stylesheets="@styles.css" text="Clear Nights Soon" />
-                        <Pane fx:id="clearNightsPane"    maxWidth="200.0" />
-                     </children>
-                  </VBox>
-                  <VBox>
-                     <children>
-                        <Label styleClass="text-heading" stylesheets="@styles.css" text="Next Week" />
-                        <Pane fx:id="nextWeekPane"    prefWidth="200.0" />
-                     </children>
-                  </VBox>
+                  <Pane fx:id="dateLocationPane" minHeight="250" prefWidth="200.0" />
+                  <Label styleClass="text-heading" stylesheets="@styles.css" text="Cloud Coverage Per Hour">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></Label>
+                  <Pane fx:id="cloudBarPane" maxWidth="400" minHeight="150" />
+                  <Label styleClass="text-heading" stylesheets="@styles.css" text="Clear Nights Soon">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></Label>
+                  <Pane fx:id="clearNightsPane" maxWidth="200.0" />
+                  <Label styleClass="text-heading" stylesheets="@styles.css" text="Next Week">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></Label>
+                  <Pane fx:id="nextWeekPane" prefWidth="200.0" />
                </children>
             </VBox>
          </content>

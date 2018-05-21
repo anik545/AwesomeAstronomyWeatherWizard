@@ -2,7 +2,6 @@
 
 .text-heading {
     -fx-text-fill: #00ffff;
-    -fx-font-size: 11pt;
-    -fx-text-alignment: CENTER; /*why you no worky*/
+    -fx-font-size: 12pt;
     -fx-font-family: "Calibri";
 }

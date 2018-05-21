@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="80.0" minHeight="50.0" minWidth="200.0" layoutX="100" prefHeight="80.0" prefWidth="440.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.CloudBar">
+<AnchorPane maxHeight="80.0" minHeight="50.0" minWidth="200.0"  prefHeight="80.0" prefWidth="450.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Weatheronomy.controller.CloudBar">
    <children>
       <HBox fx:id="cloudCover" maxHeight="45.0" prefHeight="45.0" prefWidth="200.0" style="-fx-border-radius: 10px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <Pane fx:id="tempGraph" blendMode="MULTIPLY" maxHeight="45.0" maxWidth="400.0" prefHeight="45.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
