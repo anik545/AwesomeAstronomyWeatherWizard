@@ -1,5 +1,6 @@
 package Weatheronomy.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -26,6 +27,8 @@ public class OptionsWrapper {
     @FXML
     private JFXDrawer drawer;
 
+    HamburgerBackArrowBasicTransition transition;
+
     @FXML
     public void initialize() {
 
@@ -40,6 +43,8 @@ public class OptionsWrapper {
             mainScreen.toBack(); //behind drawer (options menu)
 
             setUpHamburgerTransitions();
+            // Close drawer if buttons clicked
+            sidePanelContent.getChildren().stream().forEach(n -> n.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawwer()));
 
             // Pass mouse clicks through when drawer is closed
             drawer.setOnDrawerClosed(e -> drawer.setMouseTransparent(true));
@@ -56,17 +61,13 @@ public class OptionsWrapper {
     }
 
     private void setUpHamburgerTransitions() {
-        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
+        transition = new HamburgerBackArrowBasicTransition(hamburger);
         transition.setRate(-1);
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED,(e)->{
-            transition.setRate(transition.getRate()*-1);
-            transition.play();
-
-            if(drawer.isOpened() || drawer.isOpening())
-                drawer.close();
-            else
-                drawer.open();
-            }
-        );
+        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawwer());
+    }
+    private void toggleDrawwer() {
+        transition.setRate(transition.getRate() * -1);
+        transition.play();
+        drawer.toggle();
     }
 }
