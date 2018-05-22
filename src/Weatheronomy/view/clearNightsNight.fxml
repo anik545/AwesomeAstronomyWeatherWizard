@@ -20,7 +20,7 @@
                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                    </rowConstraints>
                    <children>
-                       <GridPane GridPane.columnIndex="2">
+                       <GridPane>
                            <columnConstraints>
                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
@@ -29,12 +29,12 @@
                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                               <Text fx:id="weekday" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="WeekDay" textAlignment="RIGHT" wrappingWidth="70.0" GridPane.halignment="RIGHT">
+                               <Text fx:id="weekday" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="WeekDay" wrappingWidth="70.0" GridPane.halignment="LEFT">
                                    <font>
                                        <Font name="Calibri Italic" size="16.0" />
                                    </font>
                                </Text>
-                               <Text fx:id="date" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" textAlignment="RIGHT" wrappingWidth="70.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                               <Text fx:id="date" fill="AQUA" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="70.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                                    <font>
                                        <Font name="Calibri Italic" size="16.0" />
                                    </font>
@@ -46,7 +46,7 @@
                                <Font name="Calibri Bold Italic" size="20.0" />
                            </font>
                        </Text>
-                       <FontIcon fx:id="ikon" iconColor="#cfcfcf" iconSize="30" wrappingWidth="145.0" GridPane.halignment="LEFT" />
+                       <FontIcon fx:id="ikon" iconColor="#cfcfcf" iconSize="30" textAlignment="RIGHT" wrappingWidth="79.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
                    </children>
                </GridPane>
    </children>

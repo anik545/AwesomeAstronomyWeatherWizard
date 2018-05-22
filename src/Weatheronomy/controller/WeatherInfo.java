@@ -162,6 +162,7 @@ public class WeatherInfo implements Initializable {
     void loadNow(ActionEvent event) {
         try {
             loadNow2(Date.from(Instant.now()));
+            locationUpdateListener.clearSelectedTime();
         } catch (ForecastException e) {
             ErrorBox.setText("Invalid Location Input!");
             e.printStackTrace();

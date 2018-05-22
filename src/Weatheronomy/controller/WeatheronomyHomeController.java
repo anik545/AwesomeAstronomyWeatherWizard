@@ -38,6 +38,9 @@ public class WeatheronomyHomeController {
     private final double default_lat = 52.210891;
     private final double default_lon = 0.091732;
 
+    private CloudBar dayCloudBarController;
+    private CloudBar nightCloudBarController;
+
     @FXML
     public void initialize() {
         try {
@@ -70,7 +73,7 @@ public class WeatheronomyHomeController {
         cloudBarPane.getChildren().removeAll(cloudBarPane.getChildren());
         FXMLLoader dayCloudBar = new FXMLLoader(getClass().getClassLoader().getResource("cloudBar.fxml"));
         Pane dayCloudBarPane = dayCloudBar.load();
-        CloudBar dayCloudBarController = dayCloudBar.getController();
+        dayCloudBarController = dayCloudBar.getController();
 
         dayCloudBarController.updateTimes(
             Weather.getSunrise(lon, lat).toInstant(),
@@ -85,7 +88,7 @@ public class WeatheronomyHomeController {
 
         FXMLLoader nightCloudBar = new FXMLLoader(getClass().getClassLoader().getResource("cloudBar.fxml"));
         Pane nightCloudBarPane = nightCloudBar.load();
-        CloudBar nightCloudBarController = nightCloudBar.getController();
+        nightCloudBarController = nightCloudBar.getController();
 
         nightCloudBarController.updateTimes(
             Weather.getSunset(lon, lat).toInstant(),
@@ -134,6 +137,11 @@ public class WeatheronomyHomeController {
 
     public void currentTimeUpdateListener(Instant time) throws ForecastException {
         dateLocationPaneController.loadNow2(Date.from(time));
+    }
+
+    public void clearSelectedTime() {
+        dayCloudBarController.clearSelectedTime();
+        nightCloudBarController.clearSelectedTime();
     }
 
     public double getLat() {return dateLocationPaneController.Latitude;}
