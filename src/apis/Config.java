@@ -2,6 +2,7 @@ package apis;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Properties;
 
 public class Config {
@@ -16,13 +17,9 @@ public class Config {
 	public Config() {
 		configFile = new java.util.Properties();
 		try {
-            System.out.println(new File("./res/config.properties").getCanonicalPath());
-            File file = new File("./res/config.properties");
-            FileInputStream f  = new FileInputStream(file);
-			configFile.load(f);
-			System.out.println(configFile);
-		} catch (Exception eta){
-			eta.printStackTrace();
+			configFile.load(ClassLoader.getSystemResourceAsStream("config.properties"));
+		} catch (IOException e){
+			e.printStackTrace();
 		}
 	}
 
