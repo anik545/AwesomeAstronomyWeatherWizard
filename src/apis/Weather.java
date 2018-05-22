@@ -19,58 +19,58 @@ public class Weather {
     private Calendar sunrise;
     private Calendar sunset;
     private Forecast dayForecast;
+
+    //Get api key from config file
     static final Config conf = new Config();
     static final String key = conf.getProperty("WEATHER_KEY");
 
 
-    public static void main(String[] args) throws ForecastException {
-        double lon = -75.1641667;
-        double lat = 39.9522222;
-        System.out.println(key);
-        double a = Weather.getCurrentlyAtTime(Date.from(Instant.now()),lon, lat).getCloudCover();
-        List<HourlyDataPoint> hs = getHourlyFromTime(Date.from(Instant.now()),lon, lat);
-        List<HourlyDataPoint> h = getHourlyFromSunrise(Date.from(Instant.now()),lon, lat);
-        List<DailyDataPoint> d = getWeek(lon, lat);
-        System.out.println(h.size());
+    public static void main(String[] args) {
     }
 
-    public Weather() throws ForecastException {
+    public Weather() {
 
     }
 
+    //Get data at a location for one point in time
     public static Currently getCurrentlyAtTime(Date date, double lon, double lat) throws ForecastException {
 
+        //Build request
         ForecastRequest request = new ForecastRequestBuilder()
                 .key(new APIKey(key))
                 .time(date.toInstant())
                 .language(ForecastRequestBuilder.Language.en)
-                .units(ForecastRequestBuilder.Units.us)
+                .units(ForecastRequestBuilder.Units.us) //use US imperial units
                 .exclude(ForecastRequestBuilder.Block.minutely)
                 .extendHourly()
-                .location(new GeoCoordinates(new Longitude(lon), new Latitude(lat))).build();
+                .location(new GeoCoordinates(new Longitude(lon), new Latitude(lat))) //add location
+                .build();
 
         DarkSkyJacksonClient client = new DarkSkyJacksonClient();
         Forecast f = client.forecast(request);
-        System.out.println(f.getHourly().getData().size());
         return f.getCurrently();
     }
 
+    //Get hourly data at a location from a time onwards (gives 24 hours)
     public static List<HourlyDataPoint> getHourlyFromTime(Date date, double lon, double lat) throws ForecastException {
+
+        //Build request
         ForecastRequest request = new ForecastRequestBuilder()
                 .key(new APIKey(key))
                 .time(date.toInstant())
                 .language(ForecastRequestBuilder.Language.en)
-                .units(ForecastRequestBuilder.Units.us)
+                .units(ForecastRequestBuilder.Units.us) //use US imperial units
                 .extendHourly()
-                .location(new GeoCoordinates(new Longitude(lon), new Latitude(lat))).build();
+                .location(new GeoCoordinates(new Longitude(lon), new Latitude(lat))) //add location
+                .build();
 
         DarkSkyJacksonClient client = new DarkSkyJacksonClient();
-        Forecast f = client.forecast(request);
-        System.out.println(f.getDaily().getData().size());
-        return f.getHourly().getData();
+        Forecast f = client.forecast(request); //use the inbuilt forecast class
+        return f.getHourly().getData(); //get the required data
     }
 
     public static List<DailyDataPoint> getWeek(double lon, double lat) throws ForecastException {
+        //Build request
         ForecastRequest request = new ForecastRequestBuilder()
                 .key(new APIKey(key))
                 .language(ForecastRequestBuilder.Language.en)
@@ -80,11 +80,10 @@ public class Weather {
 
         DarkSkyJacksonClient client = new DarkSkyJacksonClient();
         Forecast f = client.forecast(request);
-        System.out.println(f.getDaily().getData().size());
-        System.out.println(f.getDaily().getData().size());
         return f.getDaily().getData();
     }
 
+    //Calculates the sunrise, then gets hourly data for 24 hours after this time
     public static List<HourlyDataPoint> getHourlyFromSunrise(Date date, double lon, double lat) throws ForecastException {
         Location location = new Location(String.valueOf(lat), String.valueOf(lon));
 
@@ -106,14 +105,16 @@ public class Weather {
         return f.getHourly().getData().subList(0,24);
     }
 
+    //helper to get the temperature at a particular time
     public static List<Double> getTemperaturesFromTime(Date time, double lon, double lat) throws ForecastException {
         return getHourlyFromTime(time,lon,lat).stream().map(HourlyDataPoint::getTemperature).collect(Collectors.toList());
     }
-
+    //helper to the the cloud cover at a particular time
     public static List<Double> getCloudCoversFromTime(Date time, double lon, double lat) throws ForecastException {
         return getHourlyFromTime(time,lon,lat).stream().map(HourlyDataPoint::getCloudCover).collect(Collectors.toList());
     }
 
+    //Get a list of cloud cover values for 7 days, starting from today
     public static List<Double> getCloudCoversWeek(double lon, double lat) throws ForecastException {
         return getWeek(lon, lat).stream().map(DailyDataPoint::getCloudCover).collect(Collectors.toList());
     }
@@ -121,7 +122,7 @@ public class Weather {
     public static Date getSunrise(double lon, double lat){
         Location location = new Location(String.valueOf(lat), String.valueOf(lon));
 
-        SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(location, TimeZone.getDefault());
+        SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(location, TimeZone.getDefault()); //use default timezone of device
         Calendar sunrise = calculator.getOfficialSunriseCalendarForDate(Calendar.getInstance());
         return Date.from(sunrise.toInstant());
     }
@@ -129,11 +130,12 @@ public class Weather {
     public static Date getSunset(double lon, double lat){
         Location location = new Location(String.valueOf(lat), String.valueOf(lon));
 
-        SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(location, TimeZone.getDefault());
+        SunriseSunsetCalculator calculator = new SunriseSunsetCalculator(location, TimeZone.getDefault()); //use default timezone of device
         Calendar sunset = calculator.getOfficialSunsetCalendarForDate(Calendar.getInstance());
         return Date.from(sunset.toInstant());
     }
 
+    //Return the date where cloud cover is less than 0.4
     public static List<Date> getClearNights(double lon, double lat) throws ForecastException {
         return getWeek(lon, lat).stream().filter(e->e.getCloudCover()<0.4).map(e -> Date.from(e.getTime())).collect(Collectors.toList());
     }
