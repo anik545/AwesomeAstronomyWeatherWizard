@@ -95,8 +95,9 @@ public class ClearNights {
 			nightsGrid.add(controllers[i].content, 0, i);
 		}
 		nightsGrid.setVgap(5.0);
-		backgroundpane.setPadding(new javafx.geometry.Insets(2,5,2,5));
+		backgroundpane.setPadding(new javafx.geometry.Insets(2,15,2,15));
 		backgroundpane.add(nightsGrid, 0, 0);
+		backgroundpane.setMaxWidth(450);
 	}
 
 }

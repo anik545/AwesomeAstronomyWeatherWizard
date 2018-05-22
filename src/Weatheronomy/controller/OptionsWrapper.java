@@ -1,17 +1,14 @@
 package Weatheronomy.controller;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class OptionsWrapper {
 
@@ -27,7 +24,7 @@ public class OptionsWrapper {
     @FXML
     private JFXDrawer drawer;
 
-    HamburgerBackArrowBasicTransition transition;
+    HamburgerSlideCloseTransition transition;
 
     @FXML
     public void initialize() {
@@ -61,7 +58,7 @@ public class OptionsWrapper {
     }
 
     private void setUpHamburgerTransitions() {
-        transition = new HamburgerBackArrowBasicTransition(hamburger);
+        transition = new HamburgerSlideCloseTransition(hamburger);
         transition.setRate(-1);
         hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawwer());
     }

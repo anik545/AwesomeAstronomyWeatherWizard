@@ -17,17 +17,21 @@
                   <Label styleClass="text-heading" stylesheets="@styles.css" text="Cloud Coverage Per Hour">
                      <VBox.margin>
                         <Insets left="10.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                  </Label>
                   <Pane fx:id="cloudBarPane" maxWidth="400" minHeight="150" />
                   <Label styleClass="text-heading" stylesheets="@styles.css" text="Clear Nights Soon">
                      <VBox.margin>
                         <Insets left="10.0" />
-                     </VBox.margin></Label>
-                  <Pane fx:id="clearNightsPane" maxWidth="200.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Pane fx:id="clearNightsPane">
+                  </Pane>
                   <Label styleClass="text-heading" stylesheets="@styles.css" text="Next Week">
                      <VBox.margin>
                         <Insets left="10.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                  </Label>
                   <Pane fx:id="nextWeekPane" prefWidth="200.0" />
                </children>
             </VBox>
