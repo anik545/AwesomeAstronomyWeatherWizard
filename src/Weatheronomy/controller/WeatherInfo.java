@@ -32,79 +32,80 @@ import java.util.ResourceBundle;
 
 public class WeatherInfo implements Initializable {
 
-    protected Double Longitude = 0.091732;
-    protected Double Latitude = 52.210891;
-    private Map<String, WeatherIcons> Icons = new HashMap<>();
+    protected Double Longitude = 0.091732; //Initial Longitude for Cambridge
+    protected Double Latitude = 52.210891; //Initial Latitude for Cambridge
+    private Map<String, WeatherIcons> Icons = new HashMap<>(); //Map for Icon string literal to Icon's in library
+
+    //All of the below are UI elements.
+    @FXML
+    private Label dateBox; //Holds the date
 
     @FXML
-    private Label dateBox;
+    private Label timeBox; //Holds the time
 
     @FXML
-    private Label timeBox;
+    private Label FeelsLike; //Holds the current "feels like" value
 
     @FXML
-    private Label FeelsLike;
+    private Label CloudCoverage; //Holds the Cloud Cover
 
     @FXML
-    private Label CloudCoverage;
+    private Label Rain; //Holds the chance of precipitation
 
     @FXML
-    private Label Rain;
+    private Label Visibility; //Holds the visibility
 
     @FXML
-    private Label Visibility;
+    private Label Wind; //Will hold the wind speed and bearing
 
     @FXML
-    private Label Wind;
+    private JFXTextField LongitudeTF; //input text field for longitude
 
     @FXML
-    private JFXTextField LongitudeTF;
+    private JFXTextField LatitudeTF; //input text field for latitude
 
     @FXML
-    private JFXTextField LatitudeTF;
+    private Label Temp; //holds the current temperature
 
     @FXML
-    private Label Temp;
+    private Label IconDescriptor; //stores the description of the weather icon
 
     @FXML
-    private Label IconDescriptor;
+    private JFXTextField CityTF; //input text field by city name
 
     @FXML
-    private JFXTextField CityTF;
+    private FontIcon WeatherIconMain; //icon object to describe the current weather
 
     @FXML
-    private FontIcon WeatherIconMain;
-
-    @FXML
-    private Label ErrorBox;
+    private Label ErrorBox; //box that presents error message
 
     private WeatheronomyHomeController locationUpdateListener;
 
     @FXML
     void LoadLocationCity(ActionEvent event) {
-        String city = CityTF.getText();
-        if (!city.equals("")) {
-            CityTF.setPromptText(city);
-            CityTF.clear();
-            GeoCoordinates coords = null;
+        String city = CityTF.getText(); //gets the text from the txt box
+        if (!city.equals("")) { //ensures there is some valid input
+            CityTF.setPromptText(city); //set the input to the prompt background
+            CityTF.clear(); //clear text from foreground
+            GeoCoordinates coords = null; //new coordinate object
             try {
-                coords = Location.coordFromCity(city);
+                coords = Location.coordFromCity(city); //converts city name to coordinates
             } catch (LocationNotFoundException e) {
-                ErrorBox.setText("Location Input is Invalid!");
+                ErrorBox.setText("Location Input is Invalid!"); //location might not exist
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             } catch (ApiException e) {
-                ErrorBox.setText("There is an Error with our Backend!");
+                ErrorBox.setText("There is an Error with our Backend!"); //the API might not work
                 e.printStackTrace();
             }
-            Longitude = coords.longitude().value();
+            Longitude = coords.longitude().value();  //set the class attributes to the new coordinates
             Latitude = coords.latitude().value();
-            LongitudeTF.setPromptText(coords.longitude().value().toString());
+            LongitudeTF.setPromptText(coords.longitude().value().toString()); //set the coordinates to the prompt text
             LatitudeTF.setPromptText(coords.latitude().value().toString());
             try {
-                loadNow2(Date.from(Instant.now()));
+                loadNow2(Date.from(Instant.now())); //updates UI using the load now function
             } catch (ForecastException e) {
-                ErrorBox.setText("Location Data Not Valid!");
+                ErrorBox.setText("Location Data Not Valid!"); //unless the weather API does not recognize the file.
                 e.printStackTrace();
             }
             try {
@@ -119,31 +120,31 @@ public class WeatherInfo implements Initializable {
 
     @FXML
     void inputLocation(ActionEvent event) {
-        if (!(LongitudeTF.getText().equals("") || LatitudeTF.getText().equals(""))) {
-            LongitudeTF.setPromptText(LongitudeTF.getText());
+        if (!(LongitudeTF.getText().equals("") || LatitudeTF.getText().equals(""))) { //as long as both input boxes are filled
+            LongitudeTF.setPromptText(LongitudeTF.getText()); //sets the foreground text to the background text
             LatitudeTF.setPromptText(LatitudeTF.getText());
-            Longitude = Double.parseDouble(LongitudeTF.getPromptText());
+            Longitude = Double.parseDouble(LongitudeTF.getPromptText()); //set the values to the class attributes
             Latitude = Double.parseDouble(LatitudeTF.getPromptText());
-            LongitudeTF.clear();
+            LongitudeTF.clear(); //clears the foreground text
             LatitudeTF.clear();
             try {
-                String city = Location.cityFromCoord(Longitude, Latitude);
-                CityTF.setPromptText(city);
+                String city = Location.cityFromCoord(Longitude, Latitude); //converts coordinates to city name
+                CityTF.setPromptText(city); //and sets that as background text in the text field
             } catch (LocationNotFoundException e) {
-                CityTF.setPromptText("Who knows?");
+                CityTF.setPromptText("Who knows?"); //unless the API does not recognize the coordinates
                 ErrorBox.setText("Location Input is Invalid!");
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ApiException e) {
-                ErrorBox.setText("There is an Error with our Backend!");
+                ErrorBox.setText("There is an Error with our Backend!"); //OR the API has some issue.
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             try {
-                loadNow2(Date.from(Instant.now()));
+                loadNow2(Date.from(Instant.now()));  //uses load now to update the UI with new location.
             } catch (ForecastException e) {
                 ErrorBox.setText("Location Data Not Valid!");
                 e.printStackTrace();
@@ -159,60 +160,64 @@ public class WeatherInfo implements Initializable {
     }
 
     @FXML
+    //function for the "now" button
     void loadNow(ActionEvent event) {
         try {
-            loadNow2(Date.from(Instant.now()));
+            loadNow2(Date.from(Instant.now()));  //runs loadnow2 passing the current time, uses the stored information.
             locationUpdateListener.clearSelectedTime();
-        } catch (ForecastException e) {
+        } catch (ForecastException e) { //If the API does not recognise the stored location
             ErrorBox.setText("Invalid Location Input!");
             e.printStackTrace();
         }
     }
-
+    //function run by all methods to update the UI elements describing the weather at the time passed in.
     void loadNow2(Date time) throws ForecastException {
-        Currently current = Weather.getCurrentlyAtTime(time, Longitude, Latitude);
-        CloudCoverage.setText(current.getCloudCover().toString());
-        if(current.getVisibility() != null) {
-            Visibility.setText(current.getVisibility().toString());
-        } else {
+        Currently current = Weather.getCurrentlyAtTime(time, Longitude, Latitude); //Access the API at the passed time and stored location
+        CloudCoverage.setText(current.getCloudCover().toString()); //sets the cloud coverage element
+        if(current.getVisibility() != null) { //if there is a visibility value
+            Visibility.setText(current.getVisibility().toString()); //set the visibility value to the UI
+        } else { //otherwise generate a value to fill the element.
             Visibility.setText(Double.toString((new Random()).nextDouble()));
         }
-        Double AppTemperature = (((current.getApparentTemperature() - 32) * (5)) / 9);
-        Long AppTemp1 = Math.round(AppTemperature);
-        FeelsLike.setText(AppTemp1.toString());
-        Rain.setText(current.getPrecipProbability().toString());
-        Double Temperature = (((current.getTemperature() - 32) * (5)) / 9);
-        Long Temperature1 = Math.round(Temperature);
-        Temp.setText(Temperature1.toString());
-        IconDescriptor.setText(current.getIcon());
-        WeatherIconMain.setIconCode(Icons.getOrDefault(current.getIcon(), WeatherIcons.ALIEN));
-        Wind.setText(current.getWindSpeed().toString() + " / " + current.getWindBearing().toString());
-        ErrorBox.setText("");
+        Double AppTemperature = (((current.getApparentTemperature() - 32) * (5)) / 9); //convert the feels like value to celsius
+        Long AppTemp1 = Math.round(AppTemperature); //round the temperature to avoid long decimals
+        FeelsLike.setText(AppTemp1.toString()); //push value to the UI
+        Rain.setText(current.getPrecipProbability().toString()); //gets chance of rain and pushes to UI
+        Double Temperature = (((current.getTemperature() - 32) * (5)) / 9); //convert temperature value to celsius
+        Long Temperature1 = Math.round(Temperature); //round the temperature to avoid long decimals
+        Temp.setText(Temperature1.toString()); //push value to the UI
+        IconDescriptor.setText(current.getIcon()); //Set icon descriptor text on the UI
+        WeatherIconMain.setIconCode(Icons.getOrDefault(current.getIcon(), WeatherIcons.ALIEN)); //sets the Icon using the map to convert the string
+        Wind.setText(current.getWindSpeed().toString() + " / " + current.getWindBearing().toString()); //sets the wind speed and bearing
+        ErrorBox.setText(""); //blanks the error box upon successful load
     }
 
     @FXML
+    //When the mouse is moved away, the background text is set to the current value
     void UpdateLatTF(MouseEvent event) {
         LatitudeTF.setPromptText(Latitude.toString());
     }
 
     @FXML
-    void UpdateLats(MouseEvent event) {
-        LatitudeTF.setPromptText("Latitude");
-
-    }
+    //when the user hovers over the text field, it shows the background text as latitude
+    void UpdateLats(MouseEvent event) {LatitudeTF.setPromptText("Latitude");}
 
     @FXML
+    //When the mouse is moved away, the background text is set to the current value
     void UpdateLongTF(MouseEvent event) {
         LongitudeTF.setPromptText(Longitude.toString());
     }
 
     @FXML
+    //when the user hovers over the text field, it shows the background text as longitude
     void UpdateLongs(MouseEvent event) {
         LongitudeTF.setPromptText("Longitude");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        //Creates a timer that is updated every second for the clock on the GUI
         dateBox.setText(new Date().toString().substring(0, 10));
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -223,6 +228,7 @@ public class WeatherInfo implements Initializable {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
+        //Initialises the icon map with all the strings from the API and their respective Icons
         Icons.put("clear-day", WeatherIcons.DAY_SUNNY);
         Icons.put("clear-night", WeatherIcons.NIGHT_CLEAR);
         Icons.put("partly-cloudy-day", WeatherIcons.DAY_CLOUDY_HIGH);
@@ -234,6 +240,7 @@ public class WeatherInfo implements Initializable {
         Icons.put("wind", WeatherIcons.WINDY);
         Icons.put("fog", WeatherIcons.FOG);
 
+        //Loads initial data to the UI for the default coordinates.
         try {
             loadNow2(Date.from(Instant.now()));
         } catch (ForecastException e) {
