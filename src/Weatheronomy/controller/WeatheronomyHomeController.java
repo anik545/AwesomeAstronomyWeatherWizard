@@ -1,6 +1,8 @@
 package Weatheronomy.controller;
 
 import apis.Weather;
+import java.io.IOException;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import javafx.fxml.FXML;
@@ -10,9 +12,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.weathericons.WeatherIcons;
 import tk.plogitech.darksky.forecast.ForecastException;
-
-import java.io.IOException;
-import java.time.Duration;
 
 
 public class WeatheronomyHomeController {

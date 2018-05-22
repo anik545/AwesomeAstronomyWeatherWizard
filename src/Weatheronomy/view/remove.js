@@ -1,11 +1,7 @@
 function remove(selector) {
-//	try {
 		var node = document.querySelector(selector);
 		console.log(node);
 		node.parentNode.removeChild(node);
-//	} catch(err) {
-//		throw err;
-//	}
 }
 
 function removeall() {

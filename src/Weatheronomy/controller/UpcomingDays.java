@@ -1,28 +1,21 @@
 package Weatheronomy.controller;
 
 import apis.Weather;
-import de.jensd.fx.glyphs.weathericons.WeatherIcon;
-import javafx.fxml.FXML;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import org.kordamp.ikonli.weathericons.WeatherIcons;
 import tk.plogitech.darksky.forecast.ForecastException;
 import tk.plogitech.darksky.forecast.model.DailyDataPoint;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
-import java.time.Instant;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 //The Class that interfaces between the main page and the singular upcoming days
 

@@ -1,9 +1,19 @@
 package Weatheronomy.controller;
 
+import apis.Location;
 import apis.LocationNotFoundException;
+import apis.Weather;
 import com.google.maps.errors.ApiException;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.ResourceBundle;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,20 +25,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.weathericons.WeatherIcons;
-import apis.Location;
-import apis.Weather;
 import tk.plogitech.darksky.forecast.ForecastException;
 import tk.plogitech.darksky.forecast.GeoCoordinates;
 import tk.plogitech.darksky.forecast.model.Currently;
-
-import java.io.IOException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
 
 public class WeatherInfo implements Initializable {
 

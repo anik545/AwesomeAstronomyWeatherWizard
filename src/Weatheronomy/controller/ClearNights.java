@@ -1,24 +1,19 @@
 package Weatheronomy.controller;
 
 import apis.Weather;
-import de.jensd.fx.glyphs.weathericons.WeatherIcon;
-import javafx.fxml.FXML;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import org.kordamp.ikonli.weathericons.WeatherIcons;
 import tk.plogitech.darksky.forecast.ForecastException;
 import tk.plogitech.darksky.forecast.model.DailyDataPoint;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
-import java.time.Instant;
-import java.util.*;
-import java.util.List;
 
 /*
 The class that interfaces between the main classes and the singular clear nights.
