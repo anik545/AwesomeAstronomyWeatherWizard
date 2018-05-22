@@ -1,8 +1,6 @@
 package Weatheronomy.controller;
 
 import apis.Weather;
-import java.io.IOException;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import javafx.fxml.FXML;
@@ -12,6 +10,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.weathericons.WeatherIcons;
 import tk.plogitech.darksky.forecast.ForecastException;
+
+import java.io.IOException;
+import java.time.Duration;
 
 
 public class WeatheronomyHomeController {
@@ -68,6 +69,12 @@ public class WeatheronomyHomeController {
         return outerHomeAnchor;
     }
 
+    /**
+     * Replaces the cloud bars with the current selected location
+     * @param lon
+     * @param lat
+     * @throws IOException
+     */
     public void updateCloudBars(double lon, double lat)
         throws  IOException {
         cloudBarPane.getChildren().removeAll(cloudBarPane.getChildren());
@@ -85,6 +92,7 @@ public class WeatheronomyHomeController {
         );
 
         dayCloudBarController.setTimeUpdateListener(this);
+        dayCloudBarController.setTitle("Day");
 
         FXMLLoader nightCloudBar = new FXMLLoader(getClass().getClassLoader().getResource("cloudBar.fxml"));
         Pane nightCloudBarPane = nightCloudBar.load();
@@ -100,12 +108,20 @@ public class WeatheronomyHomeController {
         );
 
         nightCloudBarController.setTimeUpdateListener(this);
+        nightCloudBarController.setTitle("Night");
 
         VBox cloudBarWrapper = new VBox();
         cloudBarWrapper.getChildren().addAll(dayCloudBarPane, nightCloudBarPane);
         cloudBarPane.getChildren().add(cloudBarWrapper);
     }
 
+    /**
+     * Updates clearNights to reflect the current locatoin
+     * @param lon
+     * @param lat
+     * @throws ForecastException
+     * @throws IOException
+     */
     public void updateClearNights(double lon, double lat)
         throws ForecastException, IOException {
         clearNightsPane.getChildren().removeAll(clearNightsPane.getChildren());
@@ -116,6 +132,13 @@ public class WeatheronomyHomeController {
         clearNightsPane.setMinHeight(clearNights.nightCount*32);
     }
 
+    /**
+     * updates next week with the current location data
+     * @param lon
+     * @param lat
+     * @throws IOException
+     * @throws ForecastException
+     */
     public void updateNextWeek(double lon, double lat)
         throws IOException, ForecastException {
         nextWeekPane.getChildren().removeAll(nextWeekPane.getChildren());
@@ -126,6 +149,11 @@ public class WeatheronomyHomeController {
         nextWeekPane.setMinHeight(80);
     }
 
+    /**
+     * Updates all the components if the location updates
+     * @throws IOException
+     * @throws ForecastException
+     */
     public void locationUpdateListener()
         throws IOException, ForecastException {
         double lon = dateLocationPaneController.Longitude;
@@ -135,15 +163,27 @@ public class WeatheronomyHomeController {
         updateNextWeek(lon, lat);
     }
 
+    /**
+     * updates components if the time updates
+     * @param time
+     * @throws ForecastException
+     */
     public void currentTimeUpdateListener(Instant time) throws ForecastException {
         dateLocationPaneController.loadNow2(Date.from(time));
     }
 
+    /**
+     * clears cloud bar selected times
+     */
     public void clearSelectedTime() {
         dayCloudBarController.clearSelectedTime();
         nightCloudBarController.clearSelectedTime();
     }
 
+    /**
+     * Obvious
+     * @return
+     */
     public double getLat() {return dateLocationPaneController.Latitude;}
     public double getLong() {return dateLocationPaneController.Longitude;}
 }

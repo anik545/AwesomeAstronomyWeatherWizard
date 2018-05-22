@@ -51,6 +51,8 @@ public class CloudBar extends Pane {
     Line[] timeBars = new Line[0];
     Pane[] cloudBars = new Pane[0];
 
+    @FXML Text dayNight;
+
     private WeatheronomyHomeController timeUpdateListener;
 
     /**
@@ -288,5 +290,13 @@ public class CloudBar extends Pane {
         } catch (ForecastException e1) {
             e1.printStackTrace();
         }
+    }
+
+    /**
+     * sets the title of the cloud bars
+     * @param title the title
+     */
+    public void setTitle(String title) {
+        dayNight.setText(title);
     }
 }
