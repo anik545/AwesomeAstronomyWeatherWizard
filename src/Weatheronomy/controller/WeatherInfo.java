@@ -81,6 +81,7 @@ public class WeatherInfo implements Initializable {
     private WeatheronomyHomeController locationUpdateListener;
 
     @FXML
+    //Button event run when the user gives a location name ("Go" button), validates input, converts to coordinates and updates UI
     void LoadLocationCity(ActionEvent event) {
         String city = CityTF.getText(); //gets the text from the txt box
         if (!city.equals("")) { //ensures there is some valid input
@@ -118,6 +119,7 @@ public class WeatherInfo implements Initializable {
     }
 
     @FXML
+    //THis is the button event run when the coordinates are input, we validate the inputs, update text fields and update the UI
     void inputLocation(ActionEvent event) {
         if (!(LongitudeTF.getText().equals("") || LatitudeTF.getText().equals(""))) { //as long as both input boxes are filled
             LongitudeTF.setPromptText(LongitudeTF.getText()); //sets the foreground text to the background text
@@ -159,7 +161,7 @@ public class WeatherInfo implements Initializable {
     }
 
     @FXML
-    //function for the "now" button
+    //function for the "now" button to update the UI showing weather data the current time.
     void loadNow(ActionEvent event) {
         try {
             loadNow2(Date.from(Instant.now()));  //runs loadnow2 passing the current time, uses the stored information.
@@ -214,6 +216,7 @@ public class WeatherInfo implements Initializable {
     }
 
     @Override
+    //THis function is run when the controller is initialized, initialises some data structures and runs the clock.
     public void initialize(URL location, ResourceBundle resources) {
 
         //Creates a timer that is updated every second for the clock on the GUI
@@ -247,7 +250,7 @@ public class WeatherInfo implements Initializable {
             e.printStackTrace();
         }
     }
-
+    // Specify location update handler to work with other controllers.
     public void setLocationUpdateListener(WeatheronomyHomeController locationUpdateListener) {
         this.locationUpdateListener = locationUpdateListener;
     }
