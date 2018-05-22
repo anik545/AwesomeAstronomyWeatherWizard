@@ -24,10 +24,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//The Class that interfaces between the main page and the singular upcoming days
+
 public class UpcomingDays {
 	public GridPane backgroundpane = new GridPane();
-	public Pane finalPane = new Pane();
-	public GridPane daysGrid = new GridPane();
+	public Pane finalPane = new Pane();		//The pane that will be inserted into the main page
+	public GridPane daysGrid = new GridPane();	//The pane that holds all the days
 	public Parent[] days;
 	public UpcomingDaysDay[] controllers;
 
@@ -36,7 +38,7 @@ public class UpcomingDays {
 	private final int DAY_COUNT = 5;
 
 	public UpcomingDays(double lo, double la) throws IOException, ForecastException {
-
+		//Coordinates
 		lon = lo;
 		lat = la;
 
@@ -50,7 +52,7 @@ public class UpcomingDays {
 			String suggIcon = iWeather.getIcon();
 
 			Map<String, WeatherIcons> sugIkons = new HashMap<>();
-
+			//SUggested Icons
 			sugIkons.put("clear-day", WeatherIcons.DAY_SUNNY);
 			sugIkons.put("clear-night", WeatherIcons.NIGHT_CLEAR);
 			sugIkons.put("partly-cloudy-day", WeatherIcons.DAY_CLOUDY_HIGH);
@@ -62,6 +64,7 @@ public class UpcomingDays {
 			sugIkons.put("wind",WeatherIcons.WINDY);
 			sugIkons.put("fog",WeatherIcons.FOG);
 
+			//Set data for each day
 			FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("upcomingDaysDay.fxml"));
 			days[i] = loader.load();
 			controllers[i] = loader.getController();
@@ -76,6 +79,7 @@ public class UpcomingDays {
 		backgroundpane.setPadding(new javafx.geometry.Insets(2,5,2,5));
 		backgroundpane.add(daysGrid, 0, 0);
 
+		//Finish insertiable pane
 		ScrollPane scroller = new ScrollPane(backgroundpane);
 		scroller.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scroller.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
