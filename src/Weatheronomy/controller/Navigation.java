@@ -1,7 +1,6 @@
 package Weatheronomy.controller;
 
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 //SINGLETON CLASS GOVERNING NAVIGATION BETWEEN SCREENS
@@ -32,6 +31,7 @@ public class Navigation {
         return instance;
     }
 
+    //Used upon starting app to set the single instance of the home and light pollution page to Navigation.
     public void setLightPollutionPage(Pane lightPollutionPage, LightPollution lightPollutionController) {
         this.lightPollutionPage = lightPollutionPage;
         this.lightPollutionController = lightPollutionController;

@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 
 public class MainScreen {
+    //Stackpane of all screens
     @FXML
     private StackPane stackPane;
 
