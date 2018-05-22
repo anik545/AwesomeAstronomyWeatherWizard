@@ -64,6 +64,7 @@ public class WeatheronomyHomeController {
         }
     }
 
+    //called to pass home screen instance to Navigation
     public AnchorPane getHomeScreen() {
         return outerHomeAnchor;
     }

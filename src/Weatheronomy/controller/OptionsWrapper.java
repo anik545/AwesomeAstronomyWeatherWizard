@@ -51,12 +51,12 @@ public class OptionsWrapper {
             drawer.setDefaultDrawerSize(200);
 
         } catch (IOException e) {
-            //Logger.getLogger(OptionsWrapper.class.getName()).log(Level.SEVERE, null, e);
             e.printStackTrace();
         }
 
     }
 
+    //Sets up the animation for the hamburger
     private void setUpHamburgerTransitions() {
         transition = new HamburgerSlideCloseTransition(hamburger);
         transition.setRate(-1);
