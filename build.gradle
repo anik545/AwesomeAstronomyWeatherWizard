@@ -6,7 +6,8 @@ sourceSets {
       srcDirs = ['src']
     }
     resources {
-      srcDirs = ['src/Weatheronomy/view']
+      srcDirs = ['src/Weatheronomy/view',
+                 'res']
     }
   }
 }

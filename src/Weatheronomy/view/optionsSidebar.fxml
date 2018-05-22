@@ -10,10 +10,6 @@
          <font>
             <Font size="15.0" />
          </font></JFXButton>
-      <JFXButton fx:id="weeklyForecastB" prefHeight="46.0" prefWidth="300.0" ripplerFill="AQUA" text="WEEKLY FORECAST" textFill="#e3e5e5">
-         <font>
-            <Font size="15.0" />
-         </font></JFXButton>
       <JFXButton fx:id="lightPollutionB" onAction="#goToLightPollution" prefHeight="46.0" prefWidth="300.0" ripplerFill="AQUA" text="LIGHT POLLUTION" textFill="#e3e5e5">
          <font>
             <Font size="15.0" />
