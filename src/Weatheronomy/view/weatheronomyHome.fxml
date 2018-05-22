@@ -20,7 +20,7 @@
                      </VBox.margin>
                   </Label>
                   <Pane fx:id="cloudBarPane" maxWidth="400" minHeight="150" />
-                  <Label styleClass="text-heading" stylesheets="@styles.css" text="Clear Nights Soon">
+                  <Label styleClass="text-heading" stylesheets="@styles.css" text="Cloudless Nights Soon">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>

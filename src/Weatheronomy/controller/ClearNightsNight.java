@@ -48,7 +48,7 @@ public class ClearNightsNight {
 		if(p == Double.POSITIVE_INFINITY)
 			coverPercentage.setText("No clear nights here in the upcoming week, sorry!");
 		else
-			coverPercentage.setText("Cloud Cover: " + (int)(100.0*p) + "%");
+			coverPercentage.setText((int)(100.0*p) + "%");
 	}
 
 	public void setIcon(WeatherIcons i){
