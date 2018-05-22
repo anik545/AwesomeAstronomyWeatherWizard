@@ -13,22 +13,31 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.Date;
 
+
+/*
+The Controlling class for a singular upcoming clear night in the 'Cloudless Nights soon' widget.
+@author Daniel Sääw
+@version 1.1
+ */
+
 public class ClearNightsNight {
 
-	private String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+	// Member Variables each representing a part of the main pane
 
-	private ClearNights clearNights;
+	private String[] weekdays = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
 	@FXML
 	public Text weekday, date, coverPercentage;
 
 	@FXML
-	public Pane content;
+	public Pane content; // Main Pane which will be inserted into the ClearNights Pane
 
 	@FXML
 	public FontIcon ikon;
 
 
+
+	//Self-Explanatory Methods
 
 	public void setDay(Date d){
 		if(d != null)
