@@ -10,8 +10,8 @@
    <top>
       <AnchorPane prefHeight="60.0" prefWidth="450.0" style="-fx-background-color: #101010;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="63.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-family: Calibri;" text="Awesome Astronomy Weather Wizards" />
-            <JFXHamburger fx:id="hamburger" layoutX="22.0" layoutY="20.0" />
+            <Text fill="WHITE" layoutX="60.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20; -fx-font-family: Calibri;" text="Awesome Astronomy Weather Wizards" />
+            <JFXHamburger fx:id="hamburger" layoutX="22.0" layoutY="20.0" prefWidth="25.0" />
          </children>
       </AnchorPane>
    </top>
