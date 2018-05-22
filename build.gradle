@@ -21,6 +21,7 @@ sourceCompatibility = 9
 targetCompatibility = 9
 
 dependencies {
+    compile 'org.kordamp.ikonli:ikonli-fontawesome-pack:2.1.1'
     compile 'org.kordamp.ikonli:ikonli-weathericons-pack:2.1.1'
     compile 'org.kordamp.ikonli:ikonli-javafx:2.1.1'
     compile 'com.jfoenix:jfoenix:9.0.3' // Java 9

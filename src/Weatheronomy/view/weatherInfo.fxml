@@ -22,8 +22,8 @@
             <Font name="MT Extra" size="24.0" />
          </font></Label>
       <FontIcon iconColor="WHITE" iconLiteral="wi-wind-direction" iconSize="40" layoutX="15.0" layoutY="125.0" wrappingWidth="23.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="81.15234375" />
-      <FontIcon iconColor="WHITE" iconLiteral="wi-small-craft-advisory" iconSize="30" layoutX="17.0" layoutY="42.0" wrappingWidth="22.999995946884155" AnchorPane.leftAnchor="17.0" />
-      <FontIcon iconColor="WHITE" iconLiteral="wi-time-9" iconSize="40" layoutX="297.0" layoutY="46.0" wrappingWidth="22.999995946884155" />
+      <FontIcon iconColor="WHITE" iconLiteral="fa-calendar" iconSize="30" layoutX="17.0" layoutY="42.0" wrappingWidth="22.999995946884155" AnchorPane.leftAnchor="17.0" />
+      <FontIcon iconColor="WHITE" iconLiteral="wi-time-9" iconSize="40" layoutX="297.0" layoutY="46.0" text="" wrappingWidth="22.999995946884155" />
       <JFXTextField fx:id="LongitudeTF" layoutX="223.0" layoutY="91.0" onMouseEntered="#UpdateLongs" onMouseExited="#UpdateLongTF" prefWidth="89.0" promptText="Longitude" style="-fx-prompt-text-fill: #cfcfcf; -fx-text-inner-color: white;" AnchorPane.topAnchor="91.0">
          <font>
             <Font size="18.0" />
