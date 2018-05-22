@@ -92,7 +92,7 @@ public class WeatheronomyHomeController {
 
         nightCloudBarController.updateTimes(
             Weather.getSunset(lon, lat).toInstant(),
-            Weather.getSunrise(lon, lat).toInstant().plus(Duration.ofDays(1)),
+            Weather.getSunrise(lon, lat).toInstant().plus(Duration.ofDays(1).plusMinutes(2)),
             WeatherIcons.SUNSET,
             WeatherIcons.SUNRISE,
             lon,
