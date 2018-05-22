@@ -45,7 +45,7 @@ public class UpcomingDays {
 			String suggIcon = iWeather.getIcon();
 
 			Map<String, WeatherIcons> sugIkons = new HashMap<>();
-			//SUggested Icons
+			//Suggested Icons
 			sugIkons.put("clear-day", WeatherIcons.DAY_SUNNY);
 			sugIkons.put("clear-night", WeatherIcons.NIGHT_CLEAR);
 			sugIkons.put("partly-cloudy-day", WeatherIcons.DAY_CLOUDY_HIGH);

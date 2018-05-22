@@ -41,7 +41,9 @@ public class WeatheronomyHomeController {
     private CloudBar dayCloudBarController;
     private CloudBar nightCloudBarController;
 
+
     @FXML
+    //JavaFX default method - run after FXML fields are instantiated
     public void initialize() {
         try {
             // Load the weather info pane

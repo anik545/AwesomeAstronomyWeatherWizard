@@ -29,6 +29,7 @@ public class OptionsWrapper {
     HamburgerSlideCloseTransition transition;
 
     @FXML
+    //default fxml method
     public void initialize() {
 
         try {
@@ -43,7 +44,7 @@ public class OptionsWrapper {
 
             setUpHamburgerTransitions();
             // Close drawer if navigation buttons are clicked
-            sidePanelContent.getChildren().stream().forEach(n -> n.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawwer()));
+            sidePanelContent.getChildren().stream().forEach(n -> n.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawer()));
 
             // Pass mouse clicks through when drawer is closed
             drawer.setOnDrawerClosed(e -> drawer.setMouseTransparent(true));
@@ -62,9 +63,10 @@ public class OptionsWrapper {
     private void setUpHamburgerTransitions() {
         transition = new HamburgerSlideCloseTransition(hamburger);
         transition.setRate(-1);
-        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawwer());
+        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> toggleDrawer());
     }
-    private void toggleDrawwer() {
+    //Event handler for when hamburger is clicked
+    private void toggleDrawer() {
         transition.setRate(transition.getRate() * -1);
         transition.play();
         drawer.toggle();

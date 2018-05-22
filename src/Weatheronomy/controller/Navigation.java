@@ -13,17 +13,19 @@ public class Navigation {
     private static Pane lightPollutionPage;
     private static LightPollution lightPollutionController;
 
+    //displays light pollution page by setting it as visible and all other pages as invisible
     public static void displayLightPollutionPage() {
         homePage.setVisible(false);
         lightPollutionPage.setVisible(true);
         lightPollutionController.move(homeController.getLat(), homeController.getLong());
     }
-
+    //displays home page by setting it as visible and all other pages as invisible
     public static void displayHomePage() {
         homePage.setVisible(true);
         lightPollutionPage.setVisible(false);
     }
 
+    //get singleton instance of Navigation class
     public static Navigation getInstance() {
         if (instance == null)
             instance = new Navigation();

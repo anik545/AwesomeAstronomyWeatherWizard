@@ -12,6 +12,7 @@ public class MainScreen {
     private StackPane stackPane;
 
     @FXML
+    //JavaFX default - run after instantiating FXML fields
     public void initialize() {
         try {
             //load home screen
